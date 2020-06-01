@@ -1,0 +1,143 @@
+﻿.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    margin-bottom: 100px;
+}
+
+.header {
+    height: 90px;
+    background: black;
+    padding: 0 20px;
+    color: #fff;
+    overflow: hidden;
+}
+
+.logo {
+    float: left;
+    margin: 30px;
+}
+
+.menu {
+    float: right;
+    line-height: 100px;
+}
+
+    .menu a {
+        color: #fff;
+        text-decoration: none;
+        padding: 0 10px;
+        transition: 0.4s;
+        font-weight: bold;
+    }
+
+.show-menu-btn,
+.hide-menu-btn {
+    transition: 0.4s;
+    font-size: 30px;
+    cursor: pointer;
+    display: none;
+}
+
+form{
+    margin:10px;
+}
+
+.show-menu-btn {
+    float: right;
+}
+
+.show-menu-btn i {
+    line-height: 100px;
+}
+
+.menu a:hover,
+.show-menu-btn:hover,
+.hide-menu-btn:hover {
+    color: #3498db;
+}
+
+#chk {
+    position: absolute;
+    visibility: hidden;
+    z-index: -1111;
+}
+
+@media screen and (max-width:800px) {
+
+    .show-menu-btn,
+    .hide-menu-btn {
+        display: block;
+    }
+
+    .menu {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: #333;
+        right: -100%;
+        top: 0;
+        text-align: center;
+        padding: 80px 0;
+        line-height: normal;
+        transition: 0.7s;
+    }
+
+        .menu a {
+            display: block;
+            padding: 20px;
+            font-size: 20px;
+        }
+
+    .hide-menu-btn {
+        position: absolute;
+        top: 40px;
+        right: 40px;
+    }
+
+    #chk:checked ~ .menu {
+        right: 0;
+    }
+
+    /*---Logo---*/
+
+    .logo {
+        width: 60%;
+        height: 80%;
+        float: left;
+        margin-top: 10px;
+    }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+        }
+}
+
+.who .btn {
+    justify-content: center;
+    border: solid black 1px;
+    text-align: center;
+    background-color: #33ffbb;
+}
+
+.who .boton {
+    padding: 15px 0px 0px 0px;
+    text-align: center;
+    background-color: #33ffbb;
+}
+
+.grid-container {
+    padding-top: 60px;
+    padding: 60px 0px 60px 0px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(25px, auto);
+    grid-gap: 20px 50px;
+}
+
+.grid-item {
+    width: auto;
+    text-align: center;
+    margin: 15px;
+}
