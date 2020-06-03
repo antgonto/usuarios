@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="CrearUsuario.aspx" />
     <Content Include="HtmlPage1.html" />
+    <Content Include="style.css" />
     <Content Include="Web.config" />
     <Content Include="CrearGrupo.aspx" />
   </ItemGroup>
