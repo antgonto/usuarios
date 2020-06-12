@@ -63,6 +63,7 @@
           &nbsp;<a href="#">Logo</a> 
         </div>
     </div>
+    <center>
     <form id="crearGrupo" runat="server">
         <h2>Crear Grupo</h2>
         <div>
@@ -80,5 +81,6 @@
 
         </div>
     </form>
+    </center>
 </body>
 </html>

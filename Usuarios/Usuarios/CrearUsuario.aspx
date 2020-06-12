@@ -62,6 +62,7 @@
           &nbsp;<a href="#">Logo</a> 
         </div>
     </div>
+    <center>
     <form id="crearUsuario" runat="server">
 
         <h2>Crear Usuario</h2>
@@ -94,5 +95,6 @@
 
         </div>
     </form>
+    </center>
 </body>
 </html>
