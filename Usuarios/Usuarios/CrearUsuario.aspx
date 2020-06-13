@@ -72,8 +72,17 @@
             <asp:Label ID="lblUsuario" runat="server" Text="Usuario"></asp:Label>
             <asp:TextBox ID="txtUsuario" runat="server"></asp:TextBox>
             <br />
-            <asp:Label ID="lblNombre" runat="server" Text="Nombre Completo"></asp:Label>
+            <asp:Label ID="lblNombre" runat="server" Text="Primer Nombre"></asp:Label>
             <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
+            <br />
+            <asp:Label ID="lblSegundoNombre" runat="server" Text="Segundo Nombre"></asp:Label>
+            <asp:TextBox ID="txtSegundoNom" runat="server"></asp:TextBox>
+            <br />
+            <asp:Label ID="lblApellido" runat="server" Text="Primer Apellido"></asp:Label>
+            <asp:TextBox ID="txtApellido" runat="server"></asp:TextBox>
+            <br />
+            <asp:Label ID="lblSegundoA" runat="server" Text="Segundo Apellido"></asp:Label>
+            <asp:TextBox ID="txtSegundoA" runat="server"></asp:TextBox>
             <br />
             <asp:Label ID="lblDescripcion" runat="server" Text="Descripcion"></asp:Label>
             <asp:TextBox ID="txtDescripcion" runat="server"></asp:TextBox>
@@ -92,6 +101,10 @@
             <br />
             <asp:Label ID="lblCorreo" runat="server" Text="Correo"></asp:Label>
             <asp:TextBox ID="txtCorreo" runat="server"></asp:TextBox>
+
+            <br />
+            <br />
+            <asp:Button ID="btnCrearUsuario" runat="server" OnClick="btnCrearUsuario_Click" Text="Crear Usuario" />
 
         </div>
     </form>
