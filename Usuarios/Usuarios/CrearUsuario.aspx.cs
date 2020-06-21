@@ -10,7 +10,7 @@ namespace Usuarios
 {
     public partial class CrearUsuario : System.Web.UI.Page
     {
-        string baseDeDatos = "Data Source=rodri9920-server.database.windows.net;Initial Catalog = Usuarios; User ID = rodri9920; Password=***********";
+        string baseDeDatos = "Data Source=rodri9920-server.database.windows.net;Initial Catalog=Usuarios;User ID=Usuarios;Password=UlacitSQL2020";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,8 +28,8 @@ namespace Usuarios
             }
             else
             {
-                /*try
-                {*/
+                try
+                {
                     string usuario = txtUsuario.Text;
                     string primerNombre = txtNombre.Text;
                     string segundoNombre = txtSegundoNom.Text;
@@ -43,19 +43,22 @@ namespace Usuarios
                     string correo = txtCorreo.Text;
 
                     int respuesta = 0;
-                    /*try
-                    {*/
-                        using (SqlConnection con = new SqlConnection(baseDeDatos))
-                        {
-                            con.Open();
-                            using (SqlCommand comando = new SqlCommand("INSERT INTO Usuario VALUES (@usuario, @primerNombre, @segundoNombre," +
-                                "@primerApellido, @segundoApellido, @descripcion, @contrasena, @cedula, @direccion, @telefono, @correo)", con))
-                            {
-                                respuesta = comando.ExecuteNonQuery();
-                            }
-                            con.Close();
-                        }
-                        if (respuesta == 1)
+                try
+                {
+                using (SqlConnection con = new SqlConnection(baseDeDatos))
+                {
+                    con.Open();
+                    using (SqlCommand comando = new SqlCommand("INSERT INTO Usuario (Usuario, PrimerNombre, SegundoNombre,PrimerApellido," +
+                        "SegundoApellido,Descripcion,Contrasena,Cedula,Direccion,Telefono,Correo) VALUES ('" + usuario + "', '" + primerNombre + "', '" +
+                        segundoNombre + "','" + primerApellido + "', '" + segundoApellido + "', '" + descripcion + "', '" + contrasena + "', " +
+                        cedula + ", '" + direccion + "'," + telefono + ",'" + correo + "')", con))
+                    {
+                        respuesta = comando.ExecuteNonQuery();
+                    }
+                    con.Close();
+                }
+
+                if (respuesta == 1)
                         {
                             Response.Write("<script>alert('Se agregó el usuario de manera correcta')</script>");
                         }
@@ -63,7 +66,7 @@ namespace Usuarios
                         {
                             Response.Write("<script>alert('Hubo un error, por favor vuelva a intentarlo')</script>");
                         }
-                    /*}
+                    }
                     catch
                     {
                         Response.Write("<script>alert('Error con la base de datos')</script>");
@@ -72,7 +75,7 @@ namespace Usuarios
                 catch
                 {
                     Response.Write("<script>alert('Debe escribir los datos de manera correcta')</script>");
-                }*/
+                }
             }
 
         }
