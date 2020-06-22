@@ -106,6 +106,9 @@
             <br />
             <asp:Button ID="btnCrearUsuario" runat="server" OnClick="btnCrearUsuario_Click" Text="Crear Usuario" />
 
+            <br />
+            <asp:Button ID="btnEliminarUsuario" runat="server" OnClick="btnEliminarUsuario_Click" Text="Eliminar usuario" />
+
         </div>
     </form>
     </center>
