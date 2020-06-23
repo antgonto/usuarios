@@ -68,7 +68,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CrearUsuario.aspx" />
-    <Content Include="EditorUsuarios.aspx" />
     <Content Include="HtmlPage1.html" />
     <Content Include="style.css" />
     <Content Include="Web.config" />
@@ -81,13 +80,6 @@
     </Compile>
     <Compile Include="CrearUsuario.aspx.designer.cs">
       <DependentUpon>CrearUsuario.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="EditorUsuarios.aspx.cs">
-      <DependentUpon>EditorUsuarios.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="EditorUsuarios.aspx.designer.cs">
-      <DependentUpon>EditorUsuarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CrearGrupo.aspx.cs">

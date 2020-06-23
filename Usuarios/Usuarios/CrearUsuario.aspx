@@ -109,6 +109,15 @@
             <br />
             <asp:Button ID="btnEliminarUsuario" runat="server" OnClick="btnEliminarUsuario_Click" Text="Eliminar usuario" />
 
+            <br />
+            <br />
+            <br />
+            <asp:Label ID="lblLista" runat="server" Text="Lista de Usuarios"></asp:Label>
+            <br />
+            <asp:GridView ID="gridUsuarios" runat="server">
+            </asp:GridView>
+            <br />
+
         </div>
     </form>
     </center>

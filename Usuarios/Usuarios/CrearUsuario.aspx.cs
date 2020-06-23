@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -14,7 +15,26 @@ namespace Usuarios
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            try
+            {
+                using (SqlConnection con = new SqlConnection(baseDeDatos))
+                {
+                    con.Open();
+
+                    SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM Usuario", con);
+                    DataSet ds = new DataSet();
+                    da.Fill(ds);
+
+                    con.Close();
+
+                    gridUsuarios.DataSource = ds.Tables[0];
+                    gridUsuarios.DataBind();
+                }
+            }
+            catch
+            {
+                Response.Write("<script>alert('Ha ocurrido un error')</script>");
+            }
         }
 
         protected void btnCrearUsuario_Click(object sender, EventArgs e)
