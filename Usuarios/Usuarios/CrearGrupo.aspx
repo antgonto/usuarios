@@ -20,10 +20,6 @@
             margin-bottom: 30px;
         }
 
-        .auto-style3 {
-            width: 204px;
-        }
-
         * {
             box-sizing: border-box;
             
@@ -76,6 +72,15 @@
             <br />
             <asp:Label ID="lblMiebros" runat="server" Text="Miebros"></asp:Label>
             <asp:TextBox ID="txtMiebros" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Button ID="btnCrearGrupo" runat="server" OnClick="btnCrearGrupo_Click" Text="Crear Grupo" />
+            <br />
+            <asp:Button ID="btnEliminarGrupo" runat="server" Text="Eliminar Grupo" />
+            <br />
+            <br />
+            <asp:GridView ID="gridGrupos" runat="server">
+            </asp:GridView>
             <br />
             
 
