@@ -85,6 +85,7 @@ namespace Usuarios
                             if (respuesta == 1)
                             {
                                 Response.Write("<script>alert('Se agregó el usuario de manera correcta')</script>");
+                                    Response.Redirect(Request.RawUrl);
                             }
                             else
                             {
@@ -134,6 +135,7 @@ namespace Usuarios
                         if (respuesta == 1)
                         {
                             Response.Write("<script>alert('Se elimino el usuario de manera exitosa')</script>");
+                            Response.Redirect(Request.RawUrl);
                         }
                         else
                         {
@@ -151,6 +153,92 @@ namespace Usuarios
                     Response.Write("<script>alert('Por favor introduzca la cedula')</script>");
                 }
                 
+            }
+            catch
+            {
+                Response.Write("<script>alert('La cedula debe ser un numero')</script>");
+            }
+        }
+
+        protected void btnModificar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(txtCedulaUser.Text))
+                {
+                    int cedula = Int32.Parse(txtCedulaUser.Text);
+                    try
+                    {
+                        using(SqlConnection con = new SqlConnection(baseDeDatos))
+                        {
+                            con.Open();
+                            int respuesta = 0;
+                            using(SqlCommand comando = new SqlCommand("SELECT COUNT(*) FROM Usuario WHERE Cedula = " + cedula, con))
+                            {
+                                respuesta = Convert.ToInt32(comando.ExecuteScalar());
+                            }
+                            con.Close();
+                            if(respuesta == 1)
+                            {
+                                if (!string.IsNullOrEmpty(txtNuevoValor.Text))
+                                {
+                                    string opcion = Opciones.SelectedValue;
+                                    con.Open();
+                                    int response = 0;
+                                    if (opcion.Equals("Cedula") || opcion.Equals("Telefono"))
+                                    {
+                                        try
+                                        {
+                                            int nuevoValor = Int32.Parse(txtNuevoValor.Text);
+                                            using (SqlCommand comando = new SqlCommand("UPDATE Usuario SET " + opcion + " = " + nuevoValor + " WHERE Cedula = " + cedula, con))
+                                            {
+                                                response = comando.ExecuteNonQuery();
+                                            }
+                                        }
+                                        catch
+                                        {
+                                            Response.Write("<script>alert('Debe ser un numero')</script>");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        using (SqlCommand comando = new SqlCommand("UPDATE Usuario SET " + opcion + " = '" + txtNuevoValor.Text + "'" + " WHERE Cedula = " + cedula, con))
+                                        {
+                                            response = comando.ExecuteNonQuery();       
+                                        }
+                                    }
+                                    con.Close();
+                                    if(response == 1)
+                                    {
+                                        Response.Write("<script>alert('Se ha modificado la informacion')</script>");
+                                        Response.Redirect(Request.RawUrl);
+                                    }
+                                    else
+                                    {
+                                        Response.Write("<script>alert('Ocurrio un error, por favor vuelva a intentarlo')</script>");
+                                    }
+                                }
+                                else
+                                {
+                                    Response.Write("<script>alert('Por favor introduzca el valor a modificar')</script>");
+                                }
+                                
+                            }
+                            else
+                            {
+                                Response.Write("<script>alert('No se encuentra un usuario con esa cedula')</script>");
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        Response.Write("<script>alert('Parece haber un error con el servidor, por favor vuelva a intentar')</script>");
+                    }
+                }
+                else
+                {
+                    Response.Write("<script>alert('Por favor introduzca la cedula')</script>");
+                }
             }
             catch
             {

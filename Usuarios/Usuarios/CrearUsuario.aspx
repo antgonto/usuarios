@@ -19,10 +19,6 @@
             margin-bottom: 30px;
         }
 
-        .auto-style3 {
-            width: 204px;
-        }
-
         * {
             box-sizing: border-box;
             
@@ -116,6 +112,29 @@
             <br />
             <asp:GridView ID="gridUsuarios" runat="server">
             </asp:GridView>
+            <br />
+            <br />
+            Modificar Usuario<br />
+            <asp:Label ID="lblModificar" runat="server" Text="Cedula de Usuario"></asp:Label>
+            <asp:TextBox ID="txtCedulaUser" runat="server"></asp:TextBox>
+            <br />
+            <asp:DropDownList ID="Opciones" runat="server">
+                <asp:ListItem>Usuario</asp:ListItem>
+                <asp:ListItem Value="PrimerNombre">Primer Nombre</asp:ListItem>
+                <asp:ListItem Value="SegundoNombre">Segundo Nombre</asp:ListItem>
+                <asp:ListItem Value="PrimerApellido">Primer Apellido</asp:ListItem>
+                <asp:ListItem Value="SegundoApellido">Segundo Apellido</asp:ListItem>
+                <asp:ListItem>Descripcion</asp:ListItem>
+                <asp:ListItem Value="Contrasena">Contraseña</asp:ListItem>
+                <asp:ListItem>Cedula</asp:ListItem>
+                <asp:ListItem>Direccion</asp:ListItem>
+                <asp:ListItem>Telefono</asp:ListItem>
+                <asp:ListItem>Correo</asp:ListItem>
+            </asp:DropDownList>
+            <br />
+            <asp:TextBox ID="txtNuevoValor" runat="server"></asp:TextBox>
+            <br />
+            <asp:Button ID="btnModificar" runat="server" OnClick="btnModificar_Click" Text="Modificar" />
             <br />
 
         </div>
