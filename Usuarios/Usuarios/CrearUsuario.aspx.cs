@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
+using System.Web.Services;
 
 namespace Usuarios
 {
@@ -21,7 +23,8 @@ namespace Usuarios
                 {
                     con.Open();
 
-                    SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM Usuario", con);
+                    SqlDataAdapter da = new SqlDataAdapter("SELECT Usuario,PrimerNombre,SegundoNombre,PrimerApellido,SegundoApellido," +
+                        "Descripcion,Contrasena,Cedula,Direccion,Telefono,Correo FROM Usuario", con);
                     DataSet ds = new DataSet();
                     da.Fill(ds);
 
@@ -30,12 +33,45 @@ namespace Usuarios
                     gridUsuarios.DataSource = ds.Tables[0];
                     gridUsuarios.DataBind();
                 }
+            if (!this.IsPostBack)
+            {
+                if (Request.InputStream.Length > 0)
+                {
+                    using (StreamReader reader = new StreamReader(Request.InputStream))
+                    {
+                        string hexString = Server.UrlEncode(reader.ReadToEnd());
+                        string imageName = "IMG" + System.DateTime.Now.ToString("HHmmss");
+                        string imagePath = string.Format("~/Captures/{0}.jpg", imageName);//debe cambiarse por una ruta a la base de datos
+                        File.WriteAllBytes(Server.MapPath(imagePath), ConvertHexToBytes(hexString));
+                        Session["CapturedImage"] = ResolveUrl(imagePath);
+                    }
+                }
             }
+        }
             catch
             {
                 Response.Write("<script>alert('Ha ocurrido un error')</script>");
             }
         }
+
+        private static byte[] ConvertHexToBytes(string hex)
+        {
+            byte[] bytes = new byte[hex.Length / 2];
+            for (int i = 0; i < hex.Length; i += 2)
+            {
+                bytes[i / 2] = Convert.ToByte(hex.Substring(i, 2), 16);
+            }
+            return bytes;
+        }
+
+        [WebMethod(EnableSession = true)]
+        public static string GetCapturedImage()
+        {
+            string url = HttpContext.Current.Session["CapturedImage"].ToString();
+            HttpContext.Current.Session["CapturedImage"] = null;
+            return url;
+        }
+
 
         protected void btnCrearUsuario_Click(object sender, EventArgs e)
         {

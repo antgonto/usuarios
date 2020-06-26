@@ -46,6 +46,48 @@
     </style>
 </head>
 <body>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src='<%=ResolveUrl("~/jQuery-webcam-master/jquery.webcam.js") %>' type="text/javascript"></script>
+    <script type="text/javascript">
+    var pageUrl = '<%=ResolveUrl("~/CrearUsuario.aspx") %>';
+
+    $(function () {
+        jQuery("#webcam").webcam({
+            width: 320,
+            height: 240,
+            mode: "save",
+            swffile: '<%=ResolveUrl("~/jQuery-webcam-master/jscam.swf") %>',
+
+            onSave: function (data) {
+                $.ajax({
+                    type: "POST",
+                    url: pageUrl + "/GetCapturedImage",
+                    data: '',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (r) {
+                        $("[id*=imgCapture]").css("visibility", "visible");
+                        $("[id*=imgCapture]").attr("src", r.d);
+                    },
+                    failure: function (response) {
+                        alert(response.d);
+                    }
+                });
+            },
+
+            onCapture: function () {
+                webcam.save(pageUrl);
+            }
+        });
+
+    });
+
+    function Capture() {
+        webcam.capture();
+        return false;
+    }
+
+</script>
     <div class="header" id="header">
         <input type="checkbox" id="chk"/>
         <label for="chk" class="show-menu-btn"><i class="fa fa-bars"></i></label>
@@ -138,7 +180,37 @@
             <br />
 
         </div>
+        <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td align="center">
+                <u>Camara</u>
+            </td>
+            <td>
+            </td>
+            <td align="center">
+                <u>Foto</u>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="webcam">
+                </div>
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                <asp:Image ID="imgCapture" runat="server" Style="visibility: hidden; width: 320px;
+                    height: 240px" />
+            </td>
+        </tr>
+    </table>
+    <br />
+    <asp:Button ID="btnCapture" Text="Tomar foto" runat="server" OnClientClick="return Capture();" />
+    <br />
+    <span id="camStatus"></span>
     </form>
+
     </center>
 </body>
 </html>
