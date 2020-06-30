@@ -64,6 +64,10 @@
         <h2>Crear Grupo</h2>
         <div>
 
+            Id Grupo
+            <asp:TextBox ID="txtIdGrupo" runat="server"></asp:TextBox>
+            <br />
+
             <asp:Label ID="lblNombreGrupo" runat="server" Text="Nombre del Grupo"></asp:Label>
             <asp:TextBox ID="txtNombreGrupo" runat="server"></asp:TextBox>
             <br />
@@ -76,11 +80,26 @@
             <br />
             <asp:Button ID="btnCrearGrupo" runat="server" OnClick="btnCrearGrupo_Click" Text="Crear Grupo" />
             <br />
-            <asp:Button ID="btnEliminarGrupo" runat="server" Text="Eliminar Grupo" />
+            <asp:Button ID="btnEliminarGrupo" runat="server" Text="Eliminar Grupo" OnClick="btnEliminarGrupo_Click" />
             <br />
             <br />
             <asp:GridView ID="gridGrupos" runat="server">
             </asp:GridView>
+            <br />
+            <br />
+            Modificar Grupo<br />
+            Id Grupo
+            <asp:TextBox ID="txtIdGrupoModificar" runat="server"></asp:TextBox>
+            <br />
+            <asp:DropDownList ID="opcionesGrupo" runat="server">
+                <asp:ListItem Value="Nombre"></asp:ListItem>
+                <asp:ListItem Value="Descripcion"></asp:ListItem>
+            </asp:DropDownList>
+            <br />
+            <asp:TextBox ID="txtNuevoValorGrupo" runat="server"></asp:TextBox>
+            <br />
+            <asp:Button ID="btnModificar" runat="server" OnClick="btnModificar_Click" Text="Modificar" />
+            <br />
             <br />
             
 
