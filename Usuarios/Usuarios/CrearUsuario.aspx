@@ -141,6 +141,9 @@
             <asp:TextBox ID="txtCorreo" runat="server"></asp:TextBox>
 
             <br />
+            Grupo<asp:DropDownList ID="dropDownDescGrupo" runat="server">
+            </asp:DropDownList>
+            <br />
             <br />
             <asp:Button ID="btnCrearUsuario" runat="server" OnClick="btnCrearUsuario_Click" Text="Crear Usuario" />
 

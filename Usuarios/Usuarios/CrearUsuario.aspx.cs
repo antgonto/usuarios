@@ -30,8 +30,23 @@ namespace Usuarios
                     DataSet ds = new DataSet();
                     da.Fill(ds);
 
+                    SqlDataAdapter daGrupo = new SqlDataAdapter("SELECT GrupoID, Descripcion FROM Grupo", con);
+                    DataSet dsGrupo = new DataSet();
+                    daGrupo.Fill(dsGrupo);
+
                     con.Close();
 
+                    //DataSet for Grupo dropdown
+                    dropDownDescGrupo.DataTextField = dsGrupo.Tables[0].Columns["Descripcion"].ToString();
+                    //dropDownDescGrupo.DataValueField = "ID";
+                    dropDownDescGrupo.DataValueField = dsGrupo.Tables[0].Columns["GrupoID"].ToString();             // to retrive specific  textfield name 
+
+                    dropDownDescGrupo.DataSource = dsGrupo.Tables[0];
+                    dropDownDescGrupo.DataBind();
+                    dropDownDescGrupo.Items.Insert(0, new ListItem(String.Empty, String.Empty)); //Leaves the first value empty
+                    dropDownDescGrupo.SelectedIndex = 0;
+
+                    //DataSet to show all Usuarios
                     gridUsuarios.DataSource = ds.Tables[0];
                     gridUsuarios.DataBind();
                 }
@@ -77,10 +92,10 @@ namespace Usuarios
 
         protected void btnCrearUsuario_Click(object sender, EventArgs e)
         {
-            if(String.IsNullOrEmpty(txtUsuario.Text) || String.IsNullOrEmpty(txtNombre.Text) || String.IsNullOrEmpty(txtSegundoNom.Text)
-                || String.IsNullOrEmpty(txtApellido.Text) || String.IsNullOrEmpty(txtSegundoA.Text) || String.IsNullOrEmpty(txtDescripcion.Text)
-                || String.IsNullOrEmpty(txtPassword.Text) || String.IsNullOrEmpty(txtCedula.Text) || String.IsNullOrEmpty(txtDireccion.Text)
-                || String.IsNullOrEmpty(txtTelefono.Text) || String.IsNullOrEmpty(txtCorreo.Text))
+            if(String.IsNullOrEmpty(txtUsuario.Text) || String.IsNullOrEmpty(txtNombre.Text) || String.IsNullOrEmpty(txtApellido.Text) 
+                || String.IsNullOrEmpty(txtSegundoA.Text) || String.IsNullOrEmpty(txtDescripcion.Text) || String.IsNullOrEmpty(txtPassword.Text) 
+                || String.IsNullOrEmpty(txtCedula.Text) || String.IsNullOrEmpty(txtDireccion.Text) || String.IsNullOrEmpty(txtTelefono.Text) 
+                || String.IsNullOrEmpty(txtCorreo.Text))
             {
                 Response.Write("<script>alert('Por favor llene todos los campos')</script>");
             }
@@ -99,6 +114,7 @@ namespace Usuarios
                     string direccion = txtDireccion.Text;
                     int telefono = Int32.Parse(txtTelefono.Text);
                     string correo = txtCorreo.Text;
+                    string grupo = dropDownDescGrupo.Text;
 
                     int respuesta = 0;
                 try
@@ -114,9 +130,9 @@ namespace Usuarios
                         if(cantidad == 0)
                         { 
                             using (SqlCommand comando = new SqlCommand("INSERT INTO Usuario (Usuario, PrimerNombre, SegundoNombre,PrimerApellido," +
-                                "SegundoApellido,Descripcion,Contrasena,Cedula,Direccion,Telefono,Correo) VALUES ('" + usuario + "', '" + primerNombre + "', '" +
+                                "SegundoApellido,Descripcion,Contrasena,Cedula,Direccion,Telefono,Correo,DescGrupo) VALUES ('" + usuario + "', '" + primerNombre + "', '" +
                                 segundoNombre + "','" + primerApellido + "', '" + segundoApellido + "', '" + descripcion + "', '" + contrasena + "', " +
-                                cedula + ", '" + direccion + "'," + telefono + ",'" + correo + "')", con))
+                                cedula + ", '" + direccion + "'," + telefono + ",'" + correo + "','" + grupo + "')", con))
                             {
                                 respuesta = comando.ExecuteNonQuery();
                             }
