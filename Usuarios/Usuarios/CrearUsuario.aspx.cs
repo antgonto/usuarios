@@ -14,8 +14,8 @@ namespace Usuarios
     public partial class CrearUsuario : System.Web.UI.Page
     {
         //string baseDeDatos = "Data Source=rodri9920-server.database.windows.net;Initial Catalog=Usuarios;User ID=Usuarios;Password=UlacitSQL2020";
-        //string baseDeDatos = "Data Source=localhost;Initial Catalog=Usuarios;Integrated Security=True";
-        string baseDeDatos = "Data Source=DESKTOP-A4FEQHU\\SQLEXPRESS;Initial Catalog=Usuarios;Integrated Security=True";
+        string baseDeDatos = "Data Source=localhost;Initial Catalog=Usuarios;Integrated Security=True";
+        //string baseDeDatos = "Data Source=DESKTOP-A4FEQHU\\SQLEXPRESS;Initial Catalog=Usuarios;Integrated Security=True";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,8 +25,9 @@ namespace Usuarios
                 {
                     con.Open();
 
-                    SqlDataAdapter da = new SqlDataAdapter("SELECT Usuario,PrimerNombre,SegundoNombre,PrimerApellido,SegundoApellido," +
-                        "Descripcion,Contrasena,Cedula,Direccion,Telefono,Correo FROM Usuario", con);
+                    SqlDataAdapter da = new SqlDataAdapter("SELECT u.Usuario,u.PrimerNombre,u.SegundoNombre,u.PrimerApellido,u.SegundoApellido," +
+                        "u.Descripcion,u.Contrasena,u.Cedula,u.Direccion,u.Telefono,u.Correo, g.Descripcion AS Grupo, r.Descripcion AS Rol" +
+                        " FROM ((Usuario AS u INNER JOIN Grupo AS g ON u.GrupoID = g.GrupoID) INNER JOIN Rol AS r ON u.RolID = r.RolID)", con);
                     DataSet ds = new DataSet();
                     da.Fill(ds);
 
@@ -36,17 +37,6 @@ namespace Usuarios
 
                     con.Close();
 
-                    //DataSet for Grupo dropdown
-                    dropDownDescGrupo.DataTextField = dsGrupo.Tables[0].Columns["Descripcion"].ToString();
-                    //dropDownDescGrupo.DataValueField = "ID";
-                    dropDownDescGrupo.DataValueField = dsGrupo.Tables[0].Columns["GrupoID"].ToString();             // to retrive specific  textfield name 
-
-                    dropDownDescGrupo.DataSource = dsGrupo.Tables[0];
-                    dropDownDescGrupo.DataBind();
-                    dropDownDescGrupo.Items.Insert(0, new ListItem(String.Empty, String.Empty)); //Leaves the first value empty
-                    dropDownDescGrupo.SelectedIndex = 0;
-
-                    //DataSet to show all Usuarios
                     gridUsuarios.DataSource = ds.Tables[0];
                     gridUsuarios.DataBind();
                 }
@@ -57,7 +47,7 @@ namespace Usuarios
                     using (StreamReader reader = new StreamReader(Request.InputStream))
                     {
                         string hexString = Server.UrlEncode(reader.ReadToEnd());
-                        string imageName = "IMG" + System.DateTime.Now.ToString("HHmmss");
+                        string imageName = "Cedula" + System.DateTime.Now.ToString("HHmmss");
                         string imagePath = string.Format("~/Captures/{0}.jpg", imageName);//debe cambiarse por una ruta a la base de datos
                         File.WriteAllBytes(Server.MapPath(imagePath), ConvertHexToBytes(hexString));
                         Session["CapturedImage"] = ResolveUrl(imagePath);
@@ -114,7 +104,8 @@ namespace Usuarios
                     string direccion = txtDireccion.Text;
                     int telefono = Int32.Parse(txtTelefono.Text);
                     string correo = txtCorreo.Text;
-                    string grupo = dropDownDescGrupo.Text;
+                    int grupo = dropDownDescGrupo.SelectedIndex;
+                    int rol = ddlRoles.SelectedIndex;
 
                     int respuesta = 0;
                 try
@@ -130,9 +121,9 @@ namespace Usuarios
                         if(cantidad == 0)
                         { 
                             using (SqlCommand comando = new SqlCommand("INSERT INTO Usuario (Usuario, PrimerNombre, SegundoNombre,PrimerApellido," +
-                                "SegundoApellido,Descripcion,Contrasena,Cedula,Direccion,Telefono,Correo,DescGrupo) VALUES ('" + usuario + "', '" + primerNombre + "', '" +
+                                "SegundoApellido,Descripcion,Contrasena,Cedula,Direccion,Telefono,Correo,RolID,GrupoID) VALUES ('" + usuario + "', '" + primerNombre + "', '" +
                                 segundoNombre + "','" + primerApellido + "', '" + segundoApellido + "', '" + descripcion + "', '" + contrasena + "', " +
-                                cedula + ", '" + direccion + "'," + telefono + ",'" + correo + "','" + grupo + "')", con))
+                                cedula + ", '" + direccion + "'," + telefono + ",'" + correo + "'," + rol + "," + grupo + ")", con))
                             {
                                 respuesta = comando.ExecuteNonQuery();
                             }
@@ -298,6 +289,11 @@ namespace Usuarios
             {
                 Response.Write("<script>alert('La cedula debe ser un numero')</script>");
             }
+        }
+
+        protected void btnCapture_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

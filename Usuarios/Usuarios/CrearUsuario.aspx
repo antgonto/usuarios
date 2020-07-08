@@ -141,8 +141,13 @@
             <asp:TextBox ID="txtCorreo" runat="server"></asp:TextBox>
 
             <br />
-            Grupo<asp:DropDownList ID="dropDownDescGrupo" runat="server">
+            Grupo<asp:DropDownList ID="dropDownDescGrupo" runat="server" DataSourceID="GruposDB" DataTextField="Descripcion" DataValueField="GrupoID">
             </asp:DropDownList>
+            <asp:SqlDataSource ID="GruposDB" runat="server" ConnectionString="<%$ ConnectionStrings:ConexionGrupos-PaginaUsuarios %>" SelectCommand="SELECT * FROM [Grupo]"></asp:SqlDataSource>
+            <asp:Label ID="lblRol" runat="server" Text="Rol"></asp:Label>
+            <asp:DropDownList ID="ddlRoles" runat="server" DataSourceID="RolDatabase" DataTextField="Descripcion" DataValueField="RolID">
+            </asp:DropDownList>
+            <asp:SqlDataSource ID="RolDatabase" runat="server" ConnectionString="<%$ ConnectionStrings:ConexionGrupos-PaginaUsuarios %>" SelectCommand="SELECT * FROM [Rol]"></asp:SqlDataSource>
             <br />
             <br />
             <asp:Button ID="btnCrearUsuario" runat="server" OnClick="btnCrearUsuario_Click" Text="Crear Usuario" />
@@ -209,7 +214,7 @@
         </tr>
     </table>
     <br />
-    <asp:Button ID="btnCapture" Text="Tomar foto" runat="server" OnClientClick="return Capture();" />
+    <asp:Button ID="btnCapture" Text="Tomar foto" runat="server" OnClientClick="return Capture();" OnClick="btnCapture_Click" />
     <br />
     <span id="camStatus"></span>
     </form>
