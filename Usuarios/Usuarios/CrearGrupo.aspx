@@ -67,15 +67,8 @@
             Id Grupo
             <asp:TextBox ID="txtIdGrupo" runat="server"></asp:TextBox>
             <br />
-
-            <asp:Label ID="lblNombreGrupo" runat="server" Text="Nombre del Grupo"></asp:Label>
-            <asp:TextBox ID="txtNombreGrupo" runat="server"></asp:TextBox>
-            <br />
             <asp:Label ID="lblDescripcion" runat="server" Text="Descripcion"></asp:Label>
             <asp:TextBox ID="txtDescripcion" runat="server"></asp:TextBox>
-            <br />
-            <asp:Label ID="lblMiebros" runat="server" Text="Miebros"></asp:Label>
-            <asp:TextBox ID="txtMiebros" runat="server"></asp:TextBox>
             <br />
             <br />
             <asp:Button ID="btnCrearGrupo" runat="server" OnClick="btnCrearGrupo_Click" Text="Crear Grupo" />
