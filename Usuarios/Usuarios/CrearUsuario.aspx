@@ -46,48 +46,6 @@
     </style>
 </head>
 <body>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src='<%=ResolveUrl("~/jQuery-webcam-master/jquery.webcam.js") %>' type="text/javascript"></script>
-    <script type="text/javascript">
-    var pageUrl = '<%=ResolveUrl("~/CrearUsuario.aspx") %>';
-
-    $(function () {
-        jQuery("#webcam").webcam({
-            width: 320,
-            height: 240,
-            mode: "save",
-            swffile: '<%=ResolveUrl("~/jQuery-webcam-master/jscam.swf") %>',
-
-            onSave: function (data) {
-                $.ajax({
-                    type: "POST",
-                    url: pageUrl + "/GetCapturedImage",
-                    data: '',
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (r) {
-                        $("[id*=imgCapture]").css("visibility", "visible");
-                        $("[id*=imgCapture]").attr("src", r.d);
-                    },
-                    failure: function (response) {
-                        alert(response.d);
-                    }
-                });
-            },
-
-            onCapture: function () {
-                webcam.save(pageUrl);
-            }
-        });
-
-    });
-
-    function Capture() {
-        webcam.capture();
-        return false;
-    }
-
-</script>
     <div class="header" id="header">
         <input type="checkbox" id="chk"/>
         <label for="chk" class="show-menu-btn"><i class="fa fa-bars"></i></label>
@@ -122,8 +80,8 @@
             <asp:Label ID="lblSegundoA" runat="server" Text="Segundo Apellido"></asp:Label>
             <asp:TextBox ID="txtSegundoA" runat="server"></asp:TextBox>
             <br />
-            <asp:Label ID="lblDescripcion" runat="server" Text="Descripcion"></asp:Label>
-            <asp:TextBox ID="txtDescripcion" runat="server"></asp:TextBox>
+            <asp:Label ID="lblDetalle" runat="server" Text="Detalle"></asp:Label>
+            <asp:TextBox ID="txtDetalle" runat="server"></asp:TextBox>
             <br />
             <asp:Label ID="lblPassword" runat="server" Text="Contraseña"></asp:Label>
             <asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
@@ -148,7 +106,9 @@
             <asp:DropDownList ID="ddlRoles" runat="server" DataSourceID="RolDatabase" DataTextField="Descripcion" DataValueField="RolID">
             </asp:DropDownList>
             <asp:SqlDataSource ID="RolDatabase" runat="server" ConnectionString="<%$ ConnectionStrings:ConexionGrupos-PaginaUsuarios %>" SelectCommand="SELECT * FROM [Rol]"></asp:SqlDataSource>
+            <asp:Label ID="lblSeleccionFoto" runat="server" Text="Seleccione una foto"></asp:Label>
             <br />
+            <asp:FileUpload ID="fuFoto" runat="server" />
             <br />
             <asp:Button ID="btnCrearUsuario" runat="server" OnClick="btnCrearUsuario_Click" Text="Crear Usuario" />
 
@@ -161,6 +121,15 @@
             <asp:Label ID="lblLista" runat="server" Text="Lista de Usuarios"></asp:Label>
             <br />
             <asp:GridView ID="gridUsuarios" runat="server">
+                <Columns>
+                    <asp:TemplateField HeaderText="Foto">
+                        <ItemTemplate>
+                            <asp:Image ID="Foto" runat="server" Height="200px" Width="200px" 
+                                ImageUrl='<%#"data:Image/png;base64," + Convert.ToBase64String((byte[])Eval("Foto")) %>' />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+
+                </Columns>
             </asp:GridView>
             <br />
             <br />
@@ -174,7 +143,7 @@
                 <asp:ListItem Value="SegundoNombre">Segundo Nombre</asp:ListItem>
                 <asp:ListItem Value="PrimerApellido">Primer Apellido</asp:ListItem>
                 <asp:ListItem Value="SegundoApellido">Segundo Apellido</asp:ListItem>
-                <asp:ListItem>Descripcion</asp:ListItem>
+                <asp:ListItem Value="Detalle">Detalle</asp:ListItem>
                 <asp:ListItem Value="Contrasena">Contraseña</asp:ListItem>
                 <asp:ListItem>Cedula</asp:ListItem>
                 <asp:ListItem>Direccion</asp:ListItem>
@@ -188,35 +157,6 @@
             <br />
 
         </div>
-        <table border="0" cellpadding="0" cellspacing="0">
-        <tr>
-            <td align="center">
-                <u>Camara</u>
-            </td>
-            <td>
-            </td>
-            <td align="center">
-                <u>Foto</u>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div id="webcam">
-                </div>
-            </td>
-            <td>
-                &nbsp;
-            </td>
-            <td>
-                <asp:Image ID="imgCapture" runat="server" Style="visibility: hidden; width: 320px;
-                    height: 240px" />
-            </td>
-        </tr>
-    </table>
-    <br />
-    <asp:Button ID="btnCapture" Text="Tomar foto" runat="server" OnClientClick="return Capture();" OnClick="btnCapture_Click" />
-    <br />
-    <span id="camStatus"></span>
     </form>
 
     </center>
