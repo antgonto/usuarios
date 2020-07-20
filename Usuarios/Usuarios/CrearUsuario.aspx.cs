@@ -14,8 +14,8 @@ namespace Usuarios
     public partial class CrearUsuario : System.Web.UI.Page
     {
         //string baseDeDatos = "Data Source=rodri9920-server.database.windows.net;Initial Catalog=Usuarios;User ID=Usuarios;Password=UlacitSQL2020";
-        //string baseDeDatos = "Data Source=localhost;Initial Catalog=Usuarios;Integrated Security=True";
-        string baseDeDatos = "Data Source=DESKTOP-A4FEQHU\\SQLEXPRESS;Initial Catalog=Usuarios;Integrated Security=True";
+        string baseDeDatos = "Data Source=localhost;Initial Catalog=Usuarios;Integrated Security=True";
+        //string baseDeDatos = "Data Source=DESKTOP-A4FEQHU\\SQLEXPRESS;Initial Catalog=Usuarios;Integrated Security=True";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,34 +26,15 @@ namespace Usuarios
                     con.Open();
 
                     SqlDataAdapter da = new SqlDataAdapter("SELECT u.Usuario,u.PrimerNombre,u.SegundoNombre,u.PrimerApellido,u.SegundoApellido," +
-                        "u.Descripcion,u.Contrasena,u.Cedula,u.Direccion,u.Telefono,u.Correo, g.Descripcion AS Grupo, r.Descripcion AS Rol" +
+                        "u.Detalle,u.Contrasena,u.Cedula,u.Direccion,u.Telefono,u.Correo, g.Descripcion AS Grupo, r.Descripcion AS Rol, u.Foto" +
                         " FROM ((Usuario AS u INNER JOIN Grupo AS g ON u.GrupoID = g.GrupoID) INNER JOIN Rol AS r ON u.RolID = r.RolID)", con);
                     DataSet ds = new DataSet();
                     da.Fill(ds);
-
-                    SqlDataAdapter daGrupo = new SqlDataAdapter("SELECT GrupoID, Descripcion FROM Grupo", con);
-                    DataSet dsGrupo = new DataSet();
-                    daGrupo.Fill(dsGrupo);
-
                     con.Close();
 
                     gridUsuarios.DataSource = ds.Tables[0];
                     gridUsuarios.DataBind();
                 }
-            if (!this.IsPostBack)
-            {
-                if (Request.InputStream.Length > 0)
-                {
-                    using (StreamReader reader = new StreamReader(Request.InputStream))
-                    {
-                        string hexString = Server.UrlEncode(reader.ReadToEnd());
-                        string imageName = "Cedula" + System.DateTime.Now.ToString("HHmmss");
-                        string imagePath = string.Format("~/Captures/{0}.jpg", imageName);//debe cambiarse por una ruta a la base de datos
-                        File.WriteAllBytes(Server.MapPath(imagePath), ConvertHexToBytes(hexString));
-                        Session["CapturedImage"] = ResolveUrl(imagePath);
-                    }
-                }
-            }
         }
             catch
             {
@@ -61,31 +42,12 @@ namespace Usuarios
             }
         }
 
-        private static byte[] ConvertHexToBytes(string hex)
-        {
-            byte[] bytes = new byte[hex.Length / 2];
-            for (int i = 0; i < hex.Length; i += 2)
-            {
-                bytes[i / 2] = Convert.ToByte(hex.Substring(i, 2), 16);
-            }
-            return bytes;
-        }
-
-        [WebMethod(EnableSession = true)]
-        public static string GetCapturedImage()
-        {
-            string url = HttpContext.Current.Session["CapturedImage"].ToString();
-            HttpContext.Current.Session["CapturedImage"] = null;
-            return url;
-        }
-
-
         protected void btnCrearUsuario_Click(object sender, EventArgs e)
         {
             if(String.IsNullOrEmpty(txtUsuario.Text) || String.IsNullOrEmpty(txtNombre.Text) || String.IsNullOrEmpty(txtApellido.Text) 
-                || String.IsNullOrEmpty(txtSegundoA.Text) || String.IsNullOrEmpty(txtDescripcion.Text) || String.IsNullOrEmpty(txtPassword.Text) 
+                || String.IsNullOrEmpty(txtSegundoA.Text) || String.IsNullOrEmpty(txtDetalle.Text) || String.IsNullOrEmpty(txtPassword.Text) 
                 || String.IsNullOrEmpty(txtCedula.Text) || String.IsNullOrEmpty(txtDireccion.Text) || String.IsNullOrEmpty(txtTelefono.Text) 
-                || String.IsNullOrEmpty(txtCorreo.Text))
+                || String.IsNullOrEmpty(txtCorreo.Text) || !fuFoto.HasFile)
             {
                 Response.Write("<script>alert('Por favor llene todos los campos')</script>");
             }
@@ -98,7 +60,7 @@ namespace Usuarios
                     string segundoNombre = txtSegundoNom.Text;
                     string primerApellido = txtApellido.Text;
                     string segundoApellido = txtSegundoA.Text;
-                    string descripcion = txtDescripcion.Text;
+                    string detalle = txtDetalle.Text;
                     string contrasena = txtPassword.Text;
                     int cedula = Int32.Parse(txtCedula.Text);
                     string direccion = txtDireccion.Text;
@@ -106,7 +68,7 @@ namespace Usuarios
                     string correo = txtCorreo.Text;
                     int grupo = dropDownDescGrupo.SelectedIndex;
                     int rol = ddlRoles.SelectedIndex;
-
+                    byte[] foto = fuFoto.FileBytes;
                     int respuesta = 0;
                 try
                 {
@@ -121,13 +83,19 @@ namespace Usuarios
                         if(cantidad == 0)
                         { 
                             using (SqlCommand comando = new SqlCommand("INSERT INTO Usuario (Usuario, PrimerNombre, SegundoNombre,PrimerApellido," +
-                                "SegundoApellido,Descripcion,Contrasena,Cedula,Direccion,Telefono,Correo,RolID,GrupoID) VALUES ('" + usuario + "', '" + primerNombre + "', '" +
-                                segundoNombre + "','" + primerApellido + "', '" + segundoApellido + "', '" + descripcion + "', '" + contrasena + "', " +
+                                "SegundoApellido,Detalle,Contrasena,Cedula,Direccion,Telefono,Correo,RolID,GrupoID) VALUES ('" + usuario + "', '" + primerNombre + "', '" +
+                                segundoNombre + "','" + primerApellido + "', '" + segundoApellido + "', '" + detalle + "', '" + contrasena + "', " +
                                 cedula + ", '" + direccion + "'," + telefono + ",'" + correo + "'," + rol + "," + grupo + ")", con))
                             {
                                 respuesta = comando.ExecuteNonQuery();
                             }
-                            if (respuesta == 1)
+                            using (SqlCommand comando = new SqlCommand("UPDATE Usuario SET Foto = @fotoP WHERE Cedula = " + cedula, con))
+                            {
+                                comando.Parameters.Add("@fotoP", SqlDbType.VarBinary, foto.Length).Value = foto;
+                                respuesta = comando.ExecuteNonQuery();
+                                fuFoto.SaveAs(Server.MapPath("~/Fotos/") + cedula + ".jpg");
+                            }
+                                if (respuesta == 1)
                             {
                                 Response.Write("<script>alert('Se agregó el usuario de manera correcta')</script>");
                                     Response.Redirect(Request.RawUrl);
