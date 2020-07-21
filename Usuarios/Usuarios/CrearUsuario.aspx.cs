@@ -193,7 +193,25 @@ namespace Usuarios
                             con.Close();
                             if(respuesta == 1)
                             {
-                                if (!string.IsNullOrEmpty(txtNuevoValor.Text))
+                                con.Open();
+                                if (Opciones.SelectedValue.Equals("Foto"))
+                                {
+                                    if (fuNuevaFoto.HasFile)
+                                    {
+                                        byte[] foto = fuNuevaFoto.FileBytes;
+                                        using (SqlCommand comando = new SqlCommand("UPDATE Usuario SET Foto = @fotoP WHERE Cedula = " + cedula, con))
+                                        {
+                                            comando.Parameters.Add("@fotoP", SqlDbType.VarBinary, foto.Length).Value = foto;
+                                            respuesta = comando.ExecuteNonQuery();
+                                            fuFoto.SaveAs(Server.MapPath("~/Fotos/") + cedula + ".jpg");
+                                        }
+                                        con.Close();
+                                    }
+                                    else
+                                    {
+                                        lblNoFoto.Visible = true;
+                                    }
+                                }else if (!string.IsNullOrEmpty(txtNuevoValor.Text))
                                 {
                                     string opcion = Opciones.SelectedValue;
                                     con.Open();
@@ -206,6 +224,89 @@ namespace Usuarios
                                             using (SqlCommand comando = new SqlCommand("UPDATE Usuario SET " + opcion + " = " + nuevoValor + " WHERE Cedula = " + cedula, con))
                                             {
                                                 response = comando.ExecuteNonQuery();
+                                            }
+                                            con.Close();
+                                            if (response == 1)
+                                            {
+                                                Response.Write("<script>alert('Se modifico de manera correcta')</script>");
+                                                Response.Redirect(Request.RawUrl);
+                                            }
+                                            else
+                                            {
+                                                Response.Write("<script>alert('Hubo un error, por favor vuelva a intentarlo')</script>");
+                                            }
+                                        }
+                                        catch
+                                        {
+                                            Response.Write("<script>alert('Debe ser un numero')</script>");
+                                        }
+                                    }else if (opcion.Equals("RolID"))
+                                    {
+                                        try
+                                        {
+                                            int nuevoValor = Int32.Parse(txtNuevoValor.Text);
+                                            int cantidad = 0;
+                                            using(SqlCommand verificacion = new SqlCommand("SELECT COUNT(*) FROM Rol WHERE RolID = " + nuevoValor, con))
+                                            {
+                                                cantidad = Convert.ToInt32(verificacion.ExecuteScalar());
+                                            }
+                                            if(cantidad == 1)
+                                            {
+                                                using (SqlCommand comando = new SqlCommand("UPDATE Usuario SET " + opcion + " = " + nuevoValor + " WHERE Cedula = " + cedula, con))
+                                                {
+                                                    response = comando.ExecuteNonQuery();
+                                                }
+                                                con.Close();
+                                                if (response == 1)
+                                                {
+                                                    Response.Write("<script>alert('Se modifico de manera correcta')</script>");
+                                                    Response.Redirect(Request.RawUrl);
+                                                }
+                                                else
+                                                {
+                                                    Response.Write("<script>alert('Hubo un error, por favor vuelva a intentarlo')</script>");
+                                                }
+                                            }
+                                            else
+                                            {
+                                                Response.Write("<script>alert('No existe un rol con ese ID')</script>");
+                                            }
+                                        }
+                                        catch
+                                        {
+                                            Response.Write("<script>alert('Debe ser un numero')</script>");
+                                        }
+                                    }
+                                    else if (opcion.Equals("GrupoID"))
+                                    {
+                                        try
+                                        {
+                                            int nuevoValor = Int32.Parse(txtNuevoValor.Text);
+                                            int cantidad = 0;
+                                            using (SqlCommand verificacion = new SqlCommand("SELECT COUNT(*) FROM Grupo WHERE GrupoID = " + nuevoValor, con))
+                                            {
+                                                cantidad = Convert.ToInt32(verificacion.ExecuteScalar());
+                                            }
+                                            if (cantidad == 1)
+                                            {
+                                                using (SqlCommand comando = new SqlCommand("UPDATE Usuario SET " + opcion + " = " + nuevoValor + " WHERE Cedula = " + cedula, con))
+                                                {
+                                                    response = comando.ExecuteNonQuery();
+                                                }
+                                                con.Close();
+                                                if (response == 1)
+                                                {
+                                                    Response.Write("<script>alert('Se modifico de manera correcta')</script>");
+                                                    Response.Redirect(Request.RawUrl);
+                                                }
+                                                else
+                                                {
+                                                    Response.Write("<script>alert('Hubo un error, por favor vuelva a intentarlo')</script>");
+                                                }
+                                            }
+                                            else
+                                            {
+                                                Response.Write("<script>alert('No existe un grupo con ese ID')</script>");
                                             }
                                         }
                                         catch

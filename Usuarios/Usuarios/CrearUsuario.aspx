@@ -101,16 +101,12 @@
             <br />
             Grupo<asp:DropDownList ID="dropDownDescGrupo" runat="server" DataSourceID="GruposDB" DataTextField="Descripcion" DataValueField="GrupoID">
             </asp:DropDownList>
-            <asp:SqlDataSource ID="GruposDB" runat="server" ConnectionString="<%$ ConnectionStrings:UsuariosConnectionString %>" SelectCommand="SELECT * FROM [Grupo]"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="GruposDB" runat="server" ConnectionString="<%$ ConnectionStrings:ConexionGrupos-PaginaUsuarios %>" SelectCommand="SELECT * FROM [Grupo]"></asp:SqlDataSource>
             <asp:Label ID="lblRol" runat="server" Text="Rol"></asp:Label>
             <asp:DropDownList ID="ddlRoles" runat="server" DataSourceID="RolDatabase" DataTextField="Descripcion" DataValueField="RolID">
             </asp:DropDownList>
-<<<<<<< HEAD
-            <asp:SqlDataSource ID="RolDatabase" runat="server" ConnectionString="<%$ ConnectionStrings:UsuariosConnectionString %>" SelectCommand="SELECT * FROM [Rol]"></asp:SqlDataSource>
-=======
             <asp:SqlDataSource ID="RolDatabase" runat="server" ConnectionString="<%$ ConnectionStrings:ConexionGrupos-PaginaUsuarios %>" SelectCommand="SELECT * FROM [Rol]"></asp:SqlDataSource>
             <asp:Label ID="lblSeleccionFoto" runat="server" Text="Seleccione una foto"></asp:Label>
->>>>>>> e9c000a4078d1882b7e1911a6ea2f6554c803a82
             <br />
             <asp:FileUpload ID="fuFoto" runat="server" />
             <br />
@@ -142,20 +138,26 @@
             <asp:TextBox ID="txtCedulaUser" runat="server"></asp:TextBox>
             <br />
             <asp:DropDownList ID="Opciones" runat="server">
-                <asp:ListItem>Usuario</asp:ListItem>
+                <asp:ListItem Value="Usuario">Usuario</asp:ListItem>
                 <asp:ListItem Value="PrimerNombre">Primer Nombre</asp:ListItem>
                 <asp:ListItem Value="SegundoNombre">Segundo Nombre</asp:ListItem>
                 <asp:ListItem Value="PrimerApellido">Primer Apellido</asp:ListItem>
                 <asp:ListItem Value="SegundoApellido">Segundo Apellido</asp:ListItem>
                 <asp:ListItem Value="Detalle">Detalle</asp:ListItem>
                 <asp:ListItem Value="Contrasena">Contraseña</asp:ListItem>
-                <asp:ListItem>Cedula</asp:ListItem>
-                <asp:ListItem>Direccion</asp:ListItem>
-                <asp:ListItem>Telefono</asp:ListItem>
-                <asp:ListItem>Correo</asp:ListItem>
+                <asp:ListItem Value="Cedula">Cedula</asp:ListItem>
+                <asp:ListItem Value="Direccion">Direccion</asp:ListItem>
+                <asp:ListItem Value="Telefono">Telefono</asp:ListItem>
+                <asp:ListItem Value="Correo">Correo</asp:ListItem>
+                <asp:ListItem Value="RolID">Rol</asp:ListItem>
+                <asp:ListItem Value="GrupoID">Grupo</asp:ListItem>
+                <asp:ListItem Value="Foto">Foto</asp:ListItem>
             </asp:DropDownList>
             <br />
             <asp:TextBox ID="txtNuevoValor" runat="server"></asp:TextBox>
+            <br />
+            <asp:FileUpload ID="fuNuevaFoto" runat="server" />
+            <asp:Label ID="lblNoFoto" runat="server" Text="Por favor seleccione la foto" Visible="False"></asp:Label>
             <br />
             <asp:Button ID="btnModificar" runat="server" OnClick="btnModificar_Click" Text="Modificar" />
             <br />
