@@ -74,6 +74,7 @@
     <Content Include="jQuery-webcam-master\jscam.swf" />
     <Content Include="jQuery-webcam-master\jscam_canvas_only.swf" />
     <Content Include="jQuery-webcam-master\src\jscam.xml" />
+    <Content Include="map.js" />
     <Content Include="Mapa.aspx" />
     <Content Include="style.css" />
     <Content Include="Web.config" />
