@@ -190,10 +190,8 @@ namespace Usuarios
                             {
                                 respuesta = Convert.ToInt32(comando.ExecuteScalar());
                             }
-                            con.Close();
                             if(respuesta == 1)
                             {
-                                con.Open();
                                 if (Opciones.SelectedValue.Equals("Foto"))
                                 {
                                     if (fuNuevaFoto.HasFile)
@@ -203,18 +201,18 @@ namespace Usuarios
                                         {
                                             comando.Parameters.Add("@fotoP", SqlDbType.VarBinary, foto.Length).Value = foto;
                                             respuesta = comando.ExecuteNonQuery();
-                                            fuFoto.SaveAs(Server.MapPath("~/Fotos/") + cedula + ".jpg");
-                                        }
-                                        con.Close();
+                                            fuNuevaFoto.SaveAs(Server.MapPath("~/Fotos/") + cedula + ".jpg");
+                                            Response.Redirect(Request.RawUrl);
+                                        }   
                                     }
                                     else
                                     {
                                         lblNoFoto.Visible = true;
                                     }
-                                }else if (!string.IsNullOrEmpty(txtNuevoValor.Text))
+                                }
+                                else if (!string.IsNullOrEmpty(txtNuevoValor.Text))
                                 {
                                     string opcion = Opciones.SelectedValue;
-                                    con.Open();
                                     int response = 0;
                                     if (opcion.Equals("Cedula") || opcion.Equals("Telefono"))
                                     {
@@ -225,7 +223,6 @@ namespace Usuarios
                                             {
                                                 response = comando.ExecuteNonQuery();
                                             }
-                                            con.Close();
                                             if (response == 1)
                                             {
                                                 Response.Write("<script>alert('Se modifico de manera correcta')</script>");
@@ -255,8 +252,7 @@ namespace Usuarios
                                                 using (SqlCommand comando = new SqlCommand("UPDATE Usuario SET " + opcion + " = " + nuevoValor + " WHERE Cedula = " + cedula, con))
                                                 {
                                                     response = comando.ExecuteNonQuery();
-                                                }
-                                                con.Close();
+                                                }   
                                                 if (response == 1)
                                                 {
                                                     Response.Write("<script>alert('Se modifico de manera correcta')</script>");
@@ -292,8 +288,7 @@ namespace Usuarios
                                                 using (SqlCommand comando = new SqlCommand("UPDATE Usuario SET " + opcion + " = " + nuevoValor + " WHERE Cedula = " + cedula, con))
                                                 {
                                                     response = comando.ExecuteNonQuery();
-                                                }
-                                                con.Close();
+                                                }   
                                                 if (response == 1)
                                                 {
                                                     Response.Write("<script>alert('Se modifico de manera correcta')</script>");
@@ -321,7 +316,6 @@ namespace Usuarios
                                             response = comando.ExecuteNonQuery();       
                                         }
                                     }
-                                    con.Close();
                                     if(response == 1)
                                     {
                                         Response.Write("<script>alert('Se ha modificado la informacion')</script>");
@@ -342,6 +336,7 @@ namespace Usuarios
                             {
                                 Response.Write("<script>alert('No se encuentra un usuario con esa cedula')</script>");
                             }
+                            con.Close();
                         }
                     }
                     catch
