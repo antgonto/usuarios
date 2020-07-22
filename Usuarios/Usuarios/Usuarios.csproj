@@ -117,6 +117,7 @@
     <Content Include="assets\vendor\venobox\venobox.min.js" />
     <Content Include="assets\vendor\waypoints\jquery.waypoints.min.js" />
     <Content Include="CrearUsuario.aspx" />
+    <Content Include="EditarUsuarios.aspx" />
     <Content Include="HtmlPage1.html" />
     <Content Include="jQuery-webcam-master\jquery.webcam.js" />
     <Content Include="jQuery-webcam-master\jquery.webcam.min.js" />
@@ -150,6 +151,13 @@
     </Compile>
     <Compile Include="CrearUsuario.aspx.designer.cs">
       <DependentUpon>CrearUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditarUsuarios.aspx.cs">
+      <DependentUpon>EditarUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditarUsuarios.aspx.designer.cs">
+      <DependentUpon>EditarUsuarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="Mapa.aspx.cs">
       <DependentUpon>Mapa.aspx</DependentUpon>
