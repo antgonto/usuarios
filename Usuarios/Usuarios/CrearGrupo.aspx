@@ -58,7 +58,7 @@
           <a href="CrearGrupo.aspx">Crear Grupo</a>      
         </ul>
         <div class="auto-style2">
-          &nbsp;<a href="#">Logo</a> 
+          &nbsp;<a href="Index.html">Logo</a> 
         </div>
     </div>
     <center>

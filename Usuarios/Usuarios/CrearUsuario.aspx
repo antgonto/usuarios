@@ -43,12 +43,12 @@
     <header id="header">
         <div class="container">
             <div class="logo float-left">
-                <h1 class="text-light"><a href="index.html"><span>Proyecto</span></a></h1>
+                <h1 class="text-light"><a href="Index.html"><span>Proyecto</span></a></h1>
                 <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
             </div>
             <nav class="nav-menu float-right d-none d-lg-block">
                 <ul>
-                    <li><a href="CrearUsuario.aspx">Inicio</a></li>
+                    <li><a href="Index.html">Inicio</a></li>
                     <li class="drop-down"><a>Usuario</a>
                         <ul>
                             <li class="active"><a href="CrearUsuario.aspx">Agregar</a></li>

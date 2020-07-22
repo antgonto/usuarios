@@ -67,8 +67,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AgregarUsuarioHTML.aspx" />
-    <Content Include="asdsad.aspx" />
     <Content Include="assets\css\style.css" />
     <Content Include="assets\imagenes\bgk1.png" />
     <Content Include="assets\img\about.png" />
@@ -118,7 +116,7 @@
     <Content Include="assets\vendor\waypoints\jquery.waypoints.min.js" />
     <Content Include="CrearUsuario.aspx" />
     <Content Include="EditarUsuarios.aspx" />
-    <Content Include="HtmlPage1.html" />
+    <Content Include="Index.html" />
     <Content Include="jQuery-webcam-master\jquery.webcam.js" />
     <Content Include="jQuery-webcam-master\jquery.webcam.min.js" />
     <Content Include="jQuery-webcam-master\jscam.swf" />
@@ -131,20 +129,6 @@
     <Content Include="CrearGrupo.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AgregarUsuarioHTML.aspx.cs">
-      <DependentUpon>AgregarUsuarioHTML.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AgregarUsuarioHTML.aspx.designer.cs">
-      <DependentUpon>AgregarUsuarioHTML.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="asdsad.aspx.cs">
-      <DependentUpon>asdsad.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="asdsad.aspx.designer.cs">
-      <DependentUpon>asdsad.aspx</DependentUpon>
-    </Compile>
     <Compile Include="CrearUsuario.aspx.cs">
       <DependentUpon>CrearUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
