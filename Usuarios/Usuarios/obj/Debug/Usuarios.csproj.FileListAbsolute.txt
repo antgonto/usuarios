@@ -161,8 +161,8 @@ C:\Users\rober\Documents\Programacion\Proyecto Practica\usuarios\Usuarios\Usuari
 C:\Users\rober\Documents\Programacion\Proyecto Practica\usuarios\Usuarios\Usuarios\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\rober\Documents\Programacion\Proyecto Practica\usuarios\Usuarios\Usuarios\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\rober\Documents\Programacion\Proyecto Practica\usuarios\Usuarios\Usuarios\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\rober\Documents\Programacion\Proyecto Practica\usuarios\Usuarios\Usuarios\obj\Debug\Usuarios.csprojAssemblyReference.cache
 C:\Users\rober\Documents\Programacion\Proyecto Practica\usuarios\Usuarios\Usuarios\obj\Debug\Usuarios.csproj.CoreCompileInputs.cache
 C:\Users\rober\Documents\Programacion\Proyecto Practica\usuarios\Usuarios\Usuarios\obj\Debug\Usuarios.csproj.CopyComplete
 C:\Users\rober\Documents\Programacion\Proyecto Practica\usuarios\Usuarios\Usuarios\obj\Debug\Usuarios.dll
 C:\Users\rober\Documents\Programacion\Proyecto Practica\usuarios\Usuarios\Usuarios\obj\Debug\Usuarios.pdb
+C:\Users\rober\Documents\Programacion\Proyecto Practica\usuarios\Usuarios\Usuarios\obj\Debug\Usuarios.csprojAssemblyReference.cache

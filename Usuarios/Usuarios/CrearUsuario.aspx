@@ -6,8 +6,24 @@
 <head runat="server">
     <title>Crear Usuario</title>
     <link rel="stylesheet" href="style.css" type="text/css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i,900"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
     <style type="text/css">
         .auto-style2 {
             float: left;
@@ -58,15 +74,22 @@
           &nbsp;<a href="#">Logo</a> 
         </div>
     </div>
-    <center>
-    <form id="crearUsuario" runat="server">
+        <section id="contact" class="contact">
+          <div class="container">
+
+        <div class="row">
+
+              <div class="col-lg-12" data-aos="fade-up" data-aos-delay="300">
+    <form id="crearUsuario" runat="server" class="php-email-form">
 
         <h2>Crear Usuario</h2>
 
         <div>
+            <div class="form-group">
+                <asp:TextBox ID="txtUsuario" class="form-control" placeholder="Usuario" data-rule="minlen:1" data-msg="Please enter at least 1 chars" runat="server"></asp:TextBox>
+                <div class="validate"></div>
+           </div>
 
-            <asp:Label ID="lblUsuario" runat="server" Text="Usuario"></asp:Label>
-            <asp:TextBox ID="txtUsuario" runat="server"></asp:TextBox>
             <br />
             <asp:Label ID="lblNombre" runat="server" Text="Primer Nombre"></asp:Label>
             <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
@@ -163,8 +186,13 @@
             <br />
 
         </div>
-    </form>
+    </form> 
+              </div> 
+        </div>
 
-    </center>
+              
+          </div>
+        </section><!-- End Contact Us Section -->
+
 </body>
 </html>
