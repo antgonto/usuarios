@@ -14,8 +14,8 @@ namespace Usuarios
     public partial class CrearUsuario : System.Web.UI.Page
     {
         //string baseDeDatos = "Data Source=rodri9920-server.database.windows.net;Initial Catalog=Usuarios;User ID=Usuarios;Password=UlacitSQL2020";
-        string baseDeDatos = "Data Source=localhost;Initial Catalog=Usuarios;Integrated Security=True";
-        //string baseDeDatos = "Data Source=DESKTOP-A4FEQHU\\SQLEXPRESS;Initial Catalog=Usuarios;Integrated Security=True";
+        //string baseDeDatos = "Data Source=localhost;Initial Catalog=Usuarios;Integrated Security=True";
+        string baseDeDatos = "Data Source=DESKTOP-A4FEQHU\\SQLEXPRESS;Initial Catalog=Usuarios;Integrated Security=True";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -35,7 +35,7 @@ namespace Usuarios
                     gridUsuarios.DataSource = ds.Tables[0];
                     gridUsuarios.DataBind();
                 }
-        }
+            }
             catch
             {
                 Response.Write("<script>alert('Ha ocurrido un error')</script>");
@@ -44,9 +44,9 @@ namespace Usuarios
 
         protected void btnCrearUsuario_Click(object sender, EventArgs e)
         {
-            if(String.IsNullOrEmpty(txtUsuario.Text) || String.IsNullOrEmpty(txtNombre.Text) || String.IsNullOrEmpty(txtApellido.Text) 
-                || String.IsNullOrEmpty(txtSegundoA.Text) || String.IsNullOrEmpty(txtDetalle.Text) || String.IsNullOrEmpty(txtPassword.Text) 
-                || String.IsNullOrEmpty(txtCedula.Text) || String.IsNullOrEmpty(txtDireccion.Text) || String.IsNullOrEmpty(txtTelefono.Text) 
+            if (String.IsNullOrEmpty(txtUsuario.Text) || String.IsNullOrEmpty(txtNombre.Text) || String.IsNullOrEmpty(txtApellido.Text)
+                || String.IsNullOrEmpty(txtSegundoA.Text) || String.IsNullOrEmpty(txtDetalle.Text) || String.IsNullOrEmpty(txtPassword.Text)
+                || String.IsNullOrEmpty(txtCedula.Text) || String.IsNullOrEmpty(txtDireccion.Text) || String.IsNullOrEmpty(txtTelefono.Text)
                 || String.IsNullOrEmpty(txtCorreo.Text) || !fuFoto.HasFile)
             {
                 Response.Write("<script>alert('Por favor llene todos los campos')</script>");
@@ -70,48 +70,48 @@ namespace Usuarios
                     int rol = ddlRoles.SelectedIndex;
                     byte[] foto = fuFoto.FileBytes;
                     int respuesta = 0;
-                try
-                {
-                    using (SqlConnection con = new SqlConnection(baseDeDatos))
+                    try
                     {
-                        con.Open();
-                        int cantidad = 0;
-                        using(SqlCommand verificacion = new SqlCommand("SELECT COUNT(*) FROM Usuario WHERE Cedula = " + cedula, con))
+                        using (SqlConnection con = new SqlConnection(baseDeDatos))
                         {
+                            con.Open();
+                            int cantidad = 0;
+                            using (SqlCommand verificacion = new SqlCommand("SELECT COUNT(*) FROM Usuario WHERE Cedula = " + cedula, con))
+                            {
                                 cantidad = Convert.ToInt32(verificacion.ExecuteScalar());
-                        }
-                        if(cantidad == 0)
-                        { 
-                            using (SqlCommand comando = new SqlCommand("INSERT INTO Usuario (Usuario, PrimerNombre, SegundoNombre,PrimerApellido," +
-                                "SegundoApellido,Detalle,Contrasena,Cedula,Direccion,Telefono,Correo,RolID,GrupoID) VALUES ('" + usuario + "', '" + primerNombre + "', '" +
-                                segundoNombre + "','" + primerApellido + "', '" + segundoApellido + "', '" + detalle + "', '" + contrasena + "', " +
-                                cedula + ", '" + direccion + "'," + telefono + ",'" + correo + "'," + rol + "," + grupo + ")", con))
-                            {
-                                respuesta = comando.ExecuteNonQuery();
                             }
-                            using (SqlCommand comando = new SqlCommand("UPDATE Usuario SET Foto = @fotoP WHERE Cedula = " + cedula, con))
+                            if (cantidad == 0)
                             {
-                                comando.Parameters.Add("@fotoP", SqlDbType.VarBinary, foto.Length).Value = foto;
-                                respuesta = comando.ExecuteNonQuery();
-                                fuFoto.SaveAs(Server.MapPath("~/Fotos/") + cedula + ".jpg");
-                            }
+                                using (SqlCommand comando = new SqlCommand("INSERT INTO Usuario (Usuario, PrimerNombre, SegundoNombre,PrimerApellido," +
+                                    "SegundoApellido,Detalle,Contrasena,Cedula,Direccion,Telefono,Correo,RolID,GrupoID) VALUES ('" + usuario + "', '" + primerNombre + "', '" +
+                                    segundoNombre + "','" + primerApellido + "', '" + segundoApellido + "', '" + detalle + "', '" + contrasena + "', " +
+                                    cedula + ", '" + direccion + "'," + telefono + ",'" + correo + "'," + rol + "," + grupo + ")", con))
+                                {
+                                    respuesta = comando.ExecuteNonQuery();
+                                }
+                                using (SqlCommand comando = new SqlCommand("UPDATE Usuario SET Foto = @fotoP WHERE Cedula = " + cedula, con))
+                                {
+                                    comando.Parameters.Add("@fotoP", SqlDbType.VarBinary, foto.Length).Value = foto;
+                                    respuesta = comando.ExecuteNonQuery();
+                                    //fuFoto.SaveAs(Server.MapPath("~/Fotos/") + cedula + ".jpg");
+                                }
                                 if (respuesta == 1)
-                            {
-                                Response.Write("<script>alert('Se agregó el usuario de manera correcta')</script>");
+                                {
+                                    Response.Write("<script>alert('Se agregó el usuario de manera correcta')</script>");
                                     Response.Redirect(Request.RawUrl);
+                                }
+                                else
+                                {
+                                    Response.Write("<script>alert('Hubo un error, por favor vuelva a intentarlo')</script>");
+                                }
                             }
                             else
                             {
-                                Response.Write("<script>alert('Hubo un error, por favor vuelva a intentarlo')</script>");
+                                Response.Write("<script>alert('Ya la cedula esta registrada')</script>");
                             }
+                            con.Close();
                         }
-                        else
-                        {
-                            Response.Write("<script>alert('Ya la cedula esta registrada')</script>");
-                            }
-                        con.Close();
                     }
-                }
                     catch
                     {
                         Response.Write("<script>alert('Parece haber un error con el servidor, por favor vuelva a intentar')</script>");
@@ -122,11 +122,11 @@ namespace Usuarios
                     Response.Write("<script>alert('Debe escribir los datos de manera correcta')</script>");
                 }
             }
-
         }
 
         protected void btnEliminarUsuario_Click(object sender, EventArgs e)
         {
+            /*
             try
             {
                 if (!string.IsNullOrEmpty(txtCedula.Text))
@@ -170,11 +170,11 @@ namespace Usuarios
             catch
             {
                 Response.Write("<script>alert('La cedula debe ser un numero')</script>");
-            }
+            }*/
         }
 
         protected void btnModificar_Click(object sender, EventArgs e)
-        {
+        {/*
             try
             {
                 if (!string.IsNullOrEmpty(txtCedulaUser.Text))
@@ -352,7 +352,7 @@ namespace Usuarios
             catch
             {
                 Response.Write("<script>alert('La cedula debe ser un numero')</script>");
-            }
+            }*/
         }
 
         protected void btnCapture_Click(object sender, EventArgs e)

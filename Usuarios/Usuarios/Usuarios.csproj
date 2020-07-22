@@ -67,6 +67,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AgregarUsuarioHTML.aspx" />
+    <Content Include="asdsad.aspx" />
     <Content Include="assets\css\style.css" />
     <Content Include="assets\imagenes\bgk1.png" />
     <Content Include="assets\img\about.png" />
@@ -109,8 +111,6 @@
     <Content Include="assets\vendor\owl.carousel\assets\owl.video.play.png" />
     <Content Include="assets\vendor\owl.carousel\owl.carousel.js" />
     <Content Include="assets\vendor\owl.carousel\owl.carousel.min.js" />
-    <Content Include="assets\vendor\php-email-form\changelog.txt" />
-    <Content Include="assets\vendor\php-email-form\validate.js" />
     <Content Include="assets\vendor\venobox\venobox.css" />
     <Content Include="assets\vendor\venobox\venobox.js" />
     <Content Include="assets\vendor\venobox\venobox.min.css" />
@@ -130,6 +130,20 @@
     <Content Include="CrearGrupo.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgregarUsuarioHTML.aspx.cs">
+      <DependentUpon>AgregarUsuarioHTML.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarUsuarioHTML.aspx.designer.cs">
+      <DependentUpon>AgregarUsuarioHTML.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="asdsad.aspx.cs">
+      <DependentUpon>asdsad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="asdsad.aspx.designer.cs">
+      <DependentUpon>asdsad.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CrearUsuario.aspx.cs">
       <DependentUpon>CrearUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
