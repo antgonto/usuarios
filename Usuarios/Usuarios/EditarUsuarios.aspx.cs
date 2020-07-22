@@ -13,10 +13,32 @@ namespace Usuarios
 {
     public partial class EditarUsuarios : System.Web.UI.Page
     {
-        string baseDeDatos = "Data Source=localhost;Initial Catalog=Usuarios;Integrated Security=True";
+        //string baseDeDatos = "Data Source=localhost;Initial Catalog=Usuarios;Integrated Security=True";
+        string baseDeDatos = "Data Source=DESKTOP-A4FEQHU\\SQLEXPRESS;Initial Catalog=Usuarios;Integrated Security=True";
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(baseDeDatos))
+                {
+                    con.Open();
 
+                    SqlDataAdapter da = new SqlDataAdapter("SELECT u.Usuario,u.PrimerNombre,u.SegundoNombre,u.PrimerApellido,u.SegundoApellido," +
+                        "u.Detalle,u.Contrasena,u.Cedula,u.Direccion,u.Telefono,u.Correo, g.Descripcion AS Grupo, r.Descripcion AS Rol, u.Foto" +
+                        " FROM ((Usuario AS u INNER JOIN Grupo AS g ON u.GrupoID = g.GrupoID) INNER JOIN Rol AS r ON u.RolID = r.RolID)", con);
+                    DataSet ds = new DataSet();
+                    da.Fill(ds);
+                    con.Close();
+
+                    gridUsuarios.DataSource = ds.Tables[0];
+                    gridUsuarios.DataBind();
+                }
+            }
+            catch
+            {
+                Response.Write("<script>alert('Ha ocurrido un error')</script>");
+            }
         }
 
         protected void btnModificar_Click(object sender, EventArgs e)

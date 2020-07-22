@@ -30,9 +30,11 @@
     <link href="assets/css/style.css" rel="stylesheet">
 
     <style>
-        .tableOverflow{
+        .tableOverflow {
             overflow: auto;
+            margin-bottom: 50px;
         }
+
     </style>
 </head>
 
@@ -77,179 +79,147 @@
         <section class="inner-page">
             <div class="container">
                 <div class="portfolio-description">
-                    <div class="section-title">
-                        <h2>Lista de Usuarios</h2>
-                    </div>
-                    <div class="limiter">
-                        <div class="container-table100">
-                            <div class="wrap-table100">
-                                <div class="table100 ver4 m-b-110">
-                                    <div class="table100-head">
-                                        <table>
-                                            <thead>
-                                                <tr class="row100 head">
-                                                    <th class="cell100 column4">Fotografía</th>
-                                                    <th class="cell100 column4">Usuario</th>
-                                                    <th class="cell100 column4">Primer Nombre</th>
-                                                    <th class="cell100 column4">Segundo Nombre</th>
-                                                    <th class="cell100 column4">Primer Apellido</th>
-                                                    <th class="cell100 column4">Segundo Apellido</th>
-                                                    <th class="cell100 column4">Detalle</th>
-                                                    <th class="cell100 column4">Contraseña</th>
-                                                    <th class="cell100 column4">Cédula</th>
-                                                    <th class="cell100 column4">Dirección</th>
-                                                    <th class="cell100 column4">Teléfono</th>
-                                                    <th class="cell100 column4">Email</th>
-                                                    <th class="cell100 column4">Grupo</th>
-                                                    <th class="cell100 column4">Rol</th>
-                                                </tr>
-                                            </thead>
-                                        </table>
-                                    </div>
-                                    <div class="table100-body js-pscroll">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ======= Contact Us Section ======= -->
-                <section id="contact" class="contact">
-                    <div class="container">
-                        <div class="section-title">
-                            <h2>Agregar Usuario</h2>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12" data-aos="fade-up" data-aos-delay="300">
-                                <form class="php-email-form" id="CrearUsuario" runat="server">
-                                    <div class="form-group">
-                                        <asp:TextBox ID="txtUsuario" class="form-control" placeholder="Usuario" data-rule="minlen:1" data-msg="Please enter at least 1 chars" runat="server"></asp:TextBox>
-                                        <div class="validate"></div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-lg-6 form-group">
-                                            <asp:TextBox ID="txtNombre" class="form-control" placeholder="Primer Nombre" data-rule="minlen:3" data-msg="Please enter at least 2 chars" runat="server"></asp:TextBox>
-                                            <div class="validate"></div>
-                                        </div>
-                                        <div class="col-lg-6 form-group">
-                                            <asp:TextBox ID="txtSegundoNom" class="form-control" placeholder="Segundo Nombre" data-rule="minlen:3" data-msg="Please enter at least 2 chars" runat="server"></asp:TextBox>
-                                            <div class="validate"></div>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-lg-6 form-group">
-                                            <asp:TextBox ID="txtApellido" class="form-control" runat="server" placeholder="Primer Apellido" data-rule="minlen:3" data-msg="Please enter at least 2 chars"></asp:TextBox>
-                                            <div class="validate"></div>
-                                        </div>
-                                        <div class="col-lg-6 form-group">
-                                            <asp:TextBox ID="txtSegundoA" class="form-control" placeholder="Segundo Apellido" data-rule="minlen:3" data-msg="Please enter at least 2 chars" runat="server"></asp:TextBox>
-                                            <div class="validate"></div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <asp:TextBox ID="txtDetalle" class="form-control" placeholder="Detalle"
-                                            data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" runat="server"></asp:TextBox>
-                                        <div class="validate"></div>
-                                    </div>
-                                    <div class="form-group">
-                                        <asp:TextBox ID="txtPassword" class="form-control" placeholder="Contraseña"
-                                            data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" runat="server"></asp:TextBox>
-                                        <div class="validate"></div>
-                                    </div>
-                                    <div class="form-group">
-                                        <asp:TextBox ID="txtCedula" class="form-control" placeholder="Cedula" data-rule="minlen:9" data-msg="Please enter at least 9 chars of subject" runat="server"></asp:TextBox>
-                                        <div class="validate"></div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-lg-6 form-group">
-                                            <asp:TextBox ID="txtTelefono" class="form-control" placeholder="Teléfono"
-                                                data-rule="minlen:8" data-msg="Please enter at least 8 chars of subject" runat="server"></asp:TextBox>
-                                            <div class="validate"></div>
-                                        </div>
-                                        <div class="col-lg-6 form-group">
-                                            <asp:TextBox ID="txtCorreo" class="form-control" placeholder="Email"
-                                                data-rule="email" data-msg="Please enter a valid email" runat="server"></asp:TextBox>
-                                            <div class="validate"></div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <asp:TextBox ID="txtDireccion" class="form-control" Rows="3" data-rule="required"
-                                            data-msg="Please write your address" placeholder="Dirección" runat="server"></asp:TextBox>
-                                        <div class="validate"></div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-lg-6 form-group">
-                                            <label for="rol" class="col-sm-2 col-form-label">Grupo</label>
-                                            <asp:DropDownList ID="dropDownDescGrupo" runat="server" DataSourceID="GruposDB" DataTextField="Descripcion" DataValueField="GrupoID" class="form-control"></asp:DropDownList>
-                                            <asp:SqlDataSource ID="GruposDB" runat="server" ConnectionString="<%$ ConnectionStrings:ConexionGrupos-PaginaUsuarios %>" SelectCommand="SELECT * FROM [Grupo]"></asp:SqlDataSource>
-                                        </div>
-                                        <div class="col-lg-6 form-group">
-                                            <label for="rol" class="col-sm-2 col-form-label">Rol</label>
-                                            <asp:DropDownList ID="ddlRoles" class="form-control" runat="server" DataSourceID="RolDatabase" DataTextField="Descripcion" DataValueField="RolID"></asp:DropDownList>
-                                            <asp:SqlDataSource ID="RolDatabase" runat="server" ConnectionString="<%$ ConnectionStrings:ConexionGrupos-PaginaUsuarios %>" SelectCommand="SELECT * FROM [Rol]"></asp:SqlDataSource>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="addphoto" class="col-sm-2 col-form-label">Fotografía</label>
-                                        <asp:FileUpload ID="fuFoto" class="form-control-file" runat="server" />
-                                    </div>
-                                    <div class="text-center">
-                                        <asp:Button ID="btnCrearUsuario" runat="server" OnClick="btnCrearUsuario_Click" Text="Crear Usuario" />
-                                    </div>
-                                    <div class="tableOverflow">
-                                         <asp:GridView ID="gridUsuarios" runat="server">
-                                        <Columns>
-                                            <asp:TemplateField HeaderText="Foto">
-                                                <ItemTemplate>
-                                                    <asp:Image ID="Foto" runat="server" Height="200px" Width="200px"
-                                                        ImageUrl='<%#"data:Image/png;base64," + Convert.ToBase64String((byte[])Eval("Foto")) %>' />
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                        </Columns>
-                                    </asp:GridView>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- End Contact Us Section -->
 
-                <section id="contact" class="contact">
-                    <div class="container">
-                        <div class="section-title">
-                            <h2>Posición GPS</h2>
-                            <div class="info-box">
-                                <i class="bx bx-map"></i>
-                                <h3></h3>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6 d-flex align-items-stretch" data-aos="fade-up">
-                                <div class="info-box">
-                                    <h3>Coordenadas</h3>
-                                    <form>
-                                        <div class="form-group row">
-                                            <label for="latitud" class="col-sm-2 col-form-label col-form-label-sm">X</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control form-control-sm" id="latitud" disabled>
+                    <!-- ======= Contact Us Section ======= -->
+                    <section id="contact" class="contact">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12" data-aos="fade-up" data-aos-delay="300">
+                                    <form class="php-email-form" id="CrearUsuario" runat="server">
+                                        <div class="section-title">
+                                            <h2>Lista de Usuarios</h2>
+                                        </div>
+                                        <div class="tableOverflow">
+                                            <asp:GridView ID="gridUsuarios" runat="server">
+                                                <Columns>
+                                                    <asp:TemplateField HeaderText="Foto">
+                                                        <ItemTemplate>
+                                                            <asp:Image ID="Foto" runat="server" Height="200px" Width="200px"
+                                                                ImageUrl='<%#"data:Image/png;base64," + Convert.ToBase64String((byte[])Eval("Foto")) %>' />
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                </Columns>
+                                            </asp:GridView>
+                                        </div>
+                                        <div class="section-title">
+                                            <h2>Agregar Usuario</h2>
+                                        </div>
+                                        <div class="form-group">
+                                            <asp:TextBox ID="txtUsuario" class="form-control" placeholder="Usuario" data-rule="minlen:1" data-msg="Please enter at least 1 chars" runat="server"></asp:TextBox>
+                                            <div class="validate"></div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-lg-6 form-group">
+                                                <asp:TextBox ID="txtNombre" class="form-control" placeholder="Primer Nombre" data-rule="minlen:3" data-msg="Please enter at least 2 chars" runat="server"></asp:TextBox>
+                                                <div class="validate"></div>
+                                            </div>
+                                            <div class="col-lg-6 form-group">
+                                                <asp:TextBox ID="txtSegundoNom" class="form-control" placeholder="Segundo Nombre" data-rule="minlen:3" data-msg="Please enter at least 2 chars" runat="server"></asp:TextBox>
+                                                <div class="validate"></div>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Y</label>
-                                            <div class="col-sm-8">
-                                                <input type="email" class="form-control form-control-sm" id="longitud" disabled>
+                                        <div class="form-row">
+                                            <div class="col-lg-6 form-group">
+                                                <asp:TextBox ID="txtApellido" class="form-control" runat="server" placeholder="Primer Apellido" data-rule="minlen:3" data-msg="Please enter at least 2 chars"></asp:TextBox>
+                                                <div class="validate"></div>
+                                            </div>
+                                            <div class="col-lg-6 form-group">
+                                                <asp:TextBox ID="txtSegundoA" class="form-control" placeholder="Segundo Apellido" data-rule="minlen:3" data-msg="Please enter at least 2 chars" runat="server"></asp:TextBox>
+                                                <div class="validate"></div>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary mb-2">Obtener Posición GPS</button>
+                                        <div class="form-group">
+                                            <asp:TextBox ID="txtDetalle" class="form-control" placeholder="Detalle"
+                                                data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" runat="server"></asp:TextBox>
+                                            <div class="validate"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <asp:TextBox ID="txtPassword" class="form-control" placeholder="Contraseña"
+                                                data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" runat="server"></asp:TextBox>
+                                            <div class="validate"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <asp:TextBox ID="txtCedula" class="form-control" placeholder="Cedula" data-rule="minlen:9" data-msg="Please enter at least 9 chars of subject" runat="server"></asp:TextBox>
+                                            <div class="validate"></div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-lg-6 form-group">
+                                                <asp:TextBox ID="txtTelefono" class="form-control" placeholder="Teléfono"
+                                                    data-rule="minlen:8" data-msg="Please enter at least 8 chars of subject" runat="server"></asp:TextBox>
+                                                <div class="validate"></div>
+                                            </div>
+                                            <div class="col-lg-6 form-group">
+                                                <asp:TextBox ID="txtCorreo" class="form-control" placeholder="Email"
+                                                    data-rule="email" data-msg="Please enter a valid email" runat="server"></asp:TextBox>
+                                                <div class="validate"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <asp:TextBox ID="txtDireccion" class="form-control" Rows="3" data-rule="required"
+                                                data-msg="Please write your address" placeholder="Dirección" runat="server"></asp:TextBox>
+                                            <div class="validate"></div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-lg-6 form-group">
+                                                <label for="rol" class="col-sm-2 col-form-label">Grupo</label>
+                                                <asp:DropDownList ID="dropDownDescGrupo" runat="server" DataSourceID="GruposDB" DataTextField="Descripcion" DataValueField="GrupoID" class="form-control"></asp:DropDownList>
+                                                <asp:SqlDataSource ID="GruposDB" runat="server" ConnectionString="<%$ ConnectionStrings:UsuariosConnectionString %>" SelectCommand="SELECT * FROM [Grupo]"></asp:SqlDataSource>
+                                            </div>
+                                            <div class="col-lg-6 form-group">
+                                                <label for="rol" class="col-sm-2 col-form-label">Rol</label>
+                                                <asp:DropDownList ID="ddlRoles" class="form-control" runat="server" DataSourceID="RolDatabase" DataTextField="Descripcion" DataValueField="RolID"></asp:DropDownList>
+                                                <asp:SqlDataSource ID="RolDatabase" runat="server" ConnectionString="<%$ ConnectionStrings:UsuariosConnectionString %>" SelectCommand="SELECT * FROM [Rol]"></asp:SqlDataSource>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="addphoto" class="col-sm-2 col-form-label">Fotografía</label>
+                                            <asp:FileUpload ID="fuFoto" class="form-control-file" runat="server" />
+                                        </div>
+                                        <div class="text-center">
+                                            <asp:Button ID="btnCrearUsuario" runat="server" OnClick="btnCrearUsuario_Click" Text="Crear Usuario" />
+                                        </div>
                                     </form>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </section>
-                <!-- End Contact Us Section -->
-            </div>
+                    </section>
+                    <!-- End Contact Us Section -->
+
+                    <section id="contact" class="contact">
+                        <div class="container">
+                            <div class="section-title">
+                                <h2>Posición GPS</h2>
+                                <div class="info-box">
+                                    <i class="bx bx-map"></i>
+                                    <h3></h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 d-flex align-items-stretch" data-aos="fade-up">
+                                    <div class="info-box">
+                                        <h3>Coordenadas</h3>
+                                        <form>
+                                            <div class="form-group row">
+                                                <label for="latitud" class="col-sm-2 col-form-label col-form-label-sm">X</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control form-control-sm" id="latitud" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Y</label>
+                                                <div class="col-sm-8">
+                                                    <input type="email" class="form-control form-control-sm" id="longitud" disabled>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary mb-2">Obtener Posición GPS</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- End Contact Us Section -->
+                </div>
         </section>
     </main><!-- End #main -->
 
