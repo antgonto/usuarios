@@ -49,14 +49,14 @@
 
             <nav class="nav-menu float-right d-none d-lg-block">
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="CrearUsuario.aspx">Inicio</a></li>
                     <li class="drop-down"><a>Usuario</a>
                         <ul>
-                            <li><a href="addUsers.html">Agregar</a></li>
-                            <li class="active"><a href="editUsers.html">Editar</a></li>
+                            <li><a href="CrearUsuario.aspx">Agregar</a></li>
+                            <li class="active"><a href="EditarUsuarios.aspx">Editar</a></li>
                         </ul>
                     </li>
-                    <li><a href="grupos.html">Grupos</a></li>
+                    <li><a href="CrearGrupo.aspx">Grupos</a></li>
                 </ul>
             </nav>
             <!-- .nav-menu -->
@@ -137,17 +137,20 @@
                                                         <label for="campo" class="col-sm-2 col-form-label">Campo</label>
                                                         <div class="col-sm-10">
                                                             <asp:DropDownList ID="Opciones" class="form-control" runat="server">
-                                                                <asp:ListItem>Usuario</asp:ListItem>
+                                                                <asp:ListItem Value="Usuario">Usuario</asp:ListItem>
                                                                 <asp:ListItem Value="PrimerNombre">Primer Nombre</asp:ListItem>
                                                                 <asp:ListItem Value="SegundoNombre">Segundo Nombre</asp:ListItem>
                                                                 <asp:ListItem Value="PrimerApellido">Primer Apellido</asp:ListItem>
                                                                 <asp:ListItem Value="SegundoApellido">Segundo Apellido</asp:ListItem>
                                                                 <asp:ListItem Value="Detalle">Detalle</asp:ListItem>
                                                                 <asp:ListItem Value="Contrasena">Contraseña</asp:ListItem>
-                                                                <asp:ListItem>Cedula</asp:ListItem>
-                                                                <asp:ListItem>Direccion</asp:ListItem>
-                                                                <asp:ListItem>Telefono</asp:ListItem>
-                                                                <asp:ListItem>Correo</asp:ListItem>
+                                                                <asp:ListItem Value="Cedula">Cedula</asp:ListItem>
+                                                                <asp:ListItem Value="Direccion">Direccion</asp:ListItem>
+                                                                <asp:ListItem Value="Telefono">Telefono</asp:ListItem>
+                                                                <asp:ListItem Value="Correo">Correo</asp:ListItem>
+                                                                <asp:ListItem Value="RolID">Rol</asp:ListItem>
+                                                                <asp:ListItem Value="GrupoID">Grupo</asp:ListItem>
+                                                                <asp:ListItem Value="Foto">Foto</asp:ListItem>
                                                             </asp:DropDownList>
                                                         </div>
                                                     </div>
@@ -155,6 +158,7 @@
                                                         <label for="newInput" class="col-sm-2 col-form-label">Nuevo Valor</label>
                                                         <div class="col-sm-10">
                                                             <asp:TextBox ID="txtNuevoValor" class="form-control" runat="server"></asp:TextBox>
+                                                            <br />
                                                             <asp:FileUpload ID="fuNuevaFoto" class="form-control" runat="server" />
                                                         </div>
                                                     </div>

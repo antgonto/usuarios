@@ -48,14 +48,14 @@
             </div>
             <nav class="nav-menu float-right d-none d-lg-block">
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="CrearUsuario.aspx">Inicio</a></li>
                     <li class="drop-down"><a>Usuario</a>
                         <ul>
-                            <li class="active"><a href="addUsers.html">Agregar</a></li>
-                            <li><a href="editUsers.html">Editar</a></li>
+                            <li class="active"><a href="CrearUsuario.aspx">Agregar</a></li>
+                            <li><a href="EditarUsuarios.aspx">Editar</a></li>
                         </ul>
                     </li>
-                    <li><a href="grupos.html">Grupos</a></li>
+                    <li><a href="CrearGrupo.aspx">Grupos</a></li>
                 </ul>
             </nav>
             <!-- .nav-menu -->
@@ -163,12 +163,12 @@
                                             <div class="col-lg-6 form-group">
                                                 <label for="rol" class="col-sm-2 col-form-label">Grupo</label>
                                                 <asp:DropDownList ID="dropDownDescGrupo" runat="server" DataSourceID="GruposDB" DataTextField="Descripcion" DataValueField="GrupoID" class="form-control"></asp:DropDownList>
-                                                <asp:SqlDataSource ID="GruposDB" runat="server" ConnectionString="<%$ ConnectionStrings:UsuariosConnectionString %>" SelectCommand="SELECT * FROM [Grupo]"></asp:SqlDataSource>
+                                                <asp:SqlDataSource ID="GruposDB" runat="server" ConnectionString="<%$ ConnectionStrings:ConexionGrupos-PaginaUsuarios %>" SelectCommand="SELECT * FROM [Grupo]"></asp:SqlDataSource>
                                             </div>
                                             <div class="col-lg-6 form-group">
                                                 <label for="rol" class="col-sm-2 col-form-label">Rol</label>
                                                 <asp:DropDownList ID="ddlRoles" class="form-control" runat="server" DataSourceID="RolDatabase" DataTextField="Descripcion" DataValueField="RolID"></asp:DropDownList>
-                                                <asp:SqlDataSource ID="RolDatabase" runat="server" ConnectionString="<%$ ConnectionStrings:UsuariosConnectionString %>" SelectCommand="SELECT * FROM [Rol]"></asp:SqlDataSource>
+                                                <asp:SqlDataSource ID="RolDatabase" runat="server" ConnectionString="<%$ ConnectionStrings:ConexionGrupos-PaginaUsuarios %>" SelectCommand="SELECT * FROM [Rol]"></asp:SqlDataSource>
                                             </div>
                                         </div>
                                         <div class="form-group">
