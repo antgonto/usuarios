@@ -22,22 +22,13 @@ namespace Usuarios {
         protected global::System.Web.UI.HtmlControls.HtmlForm crearGrupo;
         
         /// <summary>
-        /// txtIdGrupo control.
+        /// gridGrupos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIdGrupo;
-        
-        /// <summary>
-        /// lblDescripcion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDescripcion;
+        protected global::System.Web.UI.WebControls.GridView gridGrupos;
         
         /// <summary>
         /// txtDescripcion control.
@@ -58,24 +49,6 @@ namespace Usuarios {
         protected global::System.Web.UI.WebControls.Button btnCrearGrupo;
         
         /// <summary>
-        /// btnEliminarGrupo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEliminarGrupo;
-        
-        /// <summary>
-        /// gridGrupos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridGrupos;
-        
-        /// <summary>
         /// txtIdGrupoModificar control.
         /// </summary>
         /// <remarks>
@@ -83,15 +56,6 @@ namespace Usuarios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtIdGrupoModificar;
-        
-        /// <summary>
-        /// opcionesGrupo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList opcionesGrupo;
         
         /// <summary>
         /// txtNuevoValorGrupo control.
@@ -110,5 +74,23 @@ namespace Usuarios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnModificar;
+        
+        /// <summary>
+        /// txtIdGrupo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtIdGrupo;
+        
+        /// <summary>
+        /// btnEliminarGrupo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEliminarGrupo;
     }
 }

@@ -70,7 +70,7 @@
                     <ol>
                         <li><a>Inicio</a></li>
                         <li><a>Usuarios</a></li>
-                        <li><a href="addUsers.html">Agregar</a></li>
+                        <li><a href="CrearUsuario.aspx">Agregar</a></li>
                     </ol>
                 </div>
             </div>
@@ -239,9 +239,9 @@
                     <div class="col-md-3 col-lg-2 col-xs-3 footer-links">
                         <h4>Sitios</h4>
                         <ul>
-                            <li><i class="bx bx-chevron-right"></i><a href="index.html">Inicio</a></li>
-                            <li><i class="bx bx-chevron-right"></i><a href="addUsers.html">Usuarios</a></li>
-                            <li><i class="bx bx-chevron-right"></i><a href="groupos.html">Grupos</a></li>
+                            <li><i class="bx bx-chevron-right"></i><a href="Index.html">Inicio</a></li>
+                            <li><i class="bx bx-chevron-right"></i><a href="CrearUsuario.aspx">Usuarios</a></li>
+                            <li><i class="bx bx-chevron-right"></i><a href="CrearGrupo.aspx">Grupos</a></li>
                         </ul>
                     </div>
                 </div>

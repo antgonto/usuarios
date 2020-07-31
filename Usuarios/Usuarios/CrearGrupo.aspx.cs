@@ -156,10 +156,9 @@ namespace Usuarios
                             {
                                 if (!string.IsNullOrEmpty(txtNuevoValorGrupo.Text))
                                 {
-                                    string opcion = opcionesGrupo.SelectedValue;
                                     con.Open();
                                     int response = 0;
-                                    using (SqlCommand comando = new SqlCommand("UPDATE Grupo SET " + opcion + " = '" + txtNuevoValorGrupo.Text + "'" + " WHERE GrupoID = " + idGrupoModificar, con))
+                                    using (SqlCommand comando = new SqlCommand("UPDATE Grupo SET Descripcion = '" + txtNuevoValorGrupo.Text + "'" + " WHERE GrupoID = " + idGrupoModificar, con))
                                     {
                                         response = comando.ExecuteNonQuery();
                                     }

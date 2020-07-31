@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
-<head>
+<head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -74,7 +74,7 @@
                     <ol>
                         <li><a>Inicio</a></li>
                         <li>Usuarios</li>
-                        <li><a href="editUsers.html">Editar</a></li>
+                        <li><a href="EditarUsuarios.aspx">Editar</a></li>
                     </ol>
                 </div>
 
@@ -195,9 +195,9 @@
                     <div class="col-md-3 col-lg-2 col-xs-3 footer-links">
                         <h4>Sitios</h4>
                         <ul>
-                            <li><i class="bx bx-chevron-right"></i><a href="index.html">Inicio</a></li>
-                            <li><i class="bx bx-chevron-right"></i><a href="addUsers.html">Usuarios</a></li>
-                            <li><i class="bx bx-chevron-right"></i><a href="grupos.html">Grupos</a></li>
+                            <li><i class="bx bx-chevron-right"></i><a href="Index.html">Inicio</a></li>
+                            <li><i class="bx bx-chevron-right"></i><a href="CrearUsuario.aspx">Usuarios</a></li>
+                            <li><i class="bx bx-chevron-right"></i><a href="CrearGrupo.aspx">Grupos</a></li>
                         </ul>
                     </div>
                 </div>
