@@ -13,8 +13,8 @@ namespace Usuarios
 {
     public partial class EditarUsuarios : System.Web.UI.Page
     {
-        string baseDeDatos = "Data Source=localhost;Initial Catalog=Usuarios;Integrated Security=True";
-        //string baseDeDatos = "Data Source=DESKTOP-A4FEQHU\\SQLEXPRESS;Initial Catalog=Usuarios;Integrated Security=True";
+        //string baseDeDatos = "Data Source=localhost;Initial Catalog=Usuarios;Integrated Security=True";
+        string baseDeDatos = "Data Source=DESKTOP-A4FEQHU\\SQLEXPRESS;Initial Catalog=Usuarios;Integrated Security=True";
 
         protected void Page_Load(object sender, EventArgs e)
         {

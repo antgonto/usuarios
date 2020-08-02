@@ -27,7 +27,10 @@
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/style.css" type="text/css" rel="stylesheet">
+
+    <link href="css/jquery.gmaps.css" rel="stylesheet" />
+    <script src="js/jquery.gmaps.js"></script>
 
     <style>
         .tableOverflow {
@@ -35,6 +38,11 @@
             margin-bottom: 50px;
         }
 
+        #map {
+            height: 230px;
+            width: 90%;
+            margin: auto;
+        }
     </style>
 </head>
 
@@ -163,18 +171,47 @@
                                             <div class="col-lg-6 form-group">
                                                 <label for="rol" class="col-sm-2 col-form-label">Grupo</label>
                                                 <asp:DropDownList ID="dropDownDescGrupo" runat="server" DataSourceID="GruposDB" DataTextField="Descripcion" DataValueField="GrupoID" class="form-control"></asp:DropDownList>
-                                                <asp:SqlDataSource ID="GruposDB" runat="server" ConnectionString="<%$ ConnectionStrings:ConexionGrupos-PaginaUsuarios %>" SelectCommand="SELECT * FROM [Grupo]"></asp:SqlDataSource>
+                                                <asp:SqlDataSource ID="GruposDB" runat="server" ConnectionString="<%$ ConnectionStrings:UsuariosConnectionString %>" SelectCommand="SELECT * FROM [Grupo]"></asp:SqlDataSource>
                                             </div>
                                             <div class="col-lg-6 form-group">
                                                 <label for="rol" class="col-sm-2 col-form-label">Rol</label>
                                                 <asp:DropDownList ID="ddlRoles" class="form-control" runat="server" DataSourceID="RolDatabase" DataTextField="Descripcion" DataValueField="RolID"></asp:DropDownList>
-                                                <asp:SqlDataSource ID="RolDatabase" runat="server" ConnectionString="<%$ ConnectionStrings:ConexionGrupos-PaginaUsuarios %>" SelectCommand="SELECT * FROM [Rol]"></asp:SqlDataSource>
+                                                <asp:SqlDataSource ID="RolDatabase" runat="server" ConnectionString="<%$ ConnectionStrings:UsuariosConnectionString %>" SelectCommand="SELECT * FROM [Rol]"></asp:SqlDataSource>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="addphoto" class="col-sm-2 col-form-label">Fotografía</label>
                                             <asp:FileUpload ID="fuFoto" class="form-control-file" runat="server" />
                                         </div>
+
+
+                                        <div class="row">
+                                            <div class="col-lg-6 d-flex align-items-stretch" data-aos="fade-up">
+                                                <div class="info-box">
+                                                    <h3>Coordenadas</h3>
+                                                    <div class="form-group row">
+                                                        <label for="latitud" class="col-sm-2 col-form-label col-form-label-sm">X</label>
+                                                        <div class="col-sm-8">
+                                                            <asp:TextBox ID="txtLatitud" class="form-control latitud" name="latitud" placeholder="Latitud"
+                                                     runat="server" disabled></asp:TextBox>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Y</label>
+                                                        <div class="col-sm-8">
+                                                        <asp:TextBox ID="txtLongitud" class="form-control longitud" name="longitud" placeholder="Longitud"
+                                                     runat="server" disabled></asp:TextBox>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 d-flex align-items-stretch" data-aos="fade-up">
+                                                <div class="info-box">
+                                                    <div id="map"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <div class="text-center">
                                             <asp:Button ID="btnCrearUsuario" runat="server" OnClick="btnCrearUsuario_Click" Text="Crear Usuario" />
                                         </div>
@@ -198,21 +235,23 @@
                                 <div class="col-lg-6 d-flex align-items-stretch" data-aos="fade-up">
                                     <div class="info-box">
                                         <h3>Coordenadas</h3>
-                                        <form>
-                                            <div class="form-group row">
-                                                <label for="latitud" class="col-sm-2 col-form-label col-form-label-sm">X</label>
-                                                <div class="col-sm-8">
-                                                    <input type="text" class="form-control form-control-sm" id="latitud" disabled>
-                                                </div>
+                                        <div class="form-group row">
+                                            <label for="latitud" class="col-sm-2 col-form-label col-form-label-sm">X</label>
+                                            <div class="col-sm-8">
                                             </div>
-                                            <div class="form-group row">
-                                                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Y</label>
-                                                <div class="col-sm-8">
-                                                    <input type="email" class="form-control form-control-sm" id="longitud" disabled>
-                                                </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Y</label>
+                                            <div class="col-sm-8">
                                             </div>
-                                            <button type="submit" class="btn btn-primary mb-2">Obtener Posición GPS</button>
-                                        </form>
+                                        </div>
+                                        <button class="btn btn-primary mb-2" onclick="Mapa()">Obtener Posición GPS</button>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 d-flex align-items-stretch" data-aos="fade-up">
+                                    <div class="info-box">
+                                        <div id="map"></div>
                                     </div>
                                 </div>
                             </div>
@@ -279,6 +318,9 @@
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxs6kENvU9MF7qMBw-DXIbdQFHMRLaiNs&callback=iniciarMap"></script>
     <script>
         $('.js-pscroll').each(function () {
             var ps = new PerfectScrollbar(this);

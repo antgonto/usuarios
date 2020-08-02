@@ -67,11 +67,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\css\jquery.gmaps.css" />
     <Content Include="assets\css\style.css" />
     <Content Include="assets\imagenes\bgk1.png" />
     <Content Include="assets\img\about.png" />
     <Content Include="assets\img\slide\slide-1.png" />
+    <Content Include="assets\js\jquery.gmaps.js" />
     <Content Include="assets\js\main.js" />
+    <Content Include="assets\js\script.js" />
     <Content Include="assets\vendor\animate.css\animate.compat.css" />
     <Content Include="assets\vendor\animate.css\animate.css" />
     <Content Include="assets\vendor\animate.css\animate.min.css" />

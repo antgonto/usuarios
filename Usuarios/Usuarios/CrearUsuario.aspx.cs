@@ -14,8 +14,8 @@ namespace Usuarios
     public partial class CrearUsuario : System.Web.UI.Page
     {
         //string baseDeDatos = "Data Source=rodri9920-server.database.windows.net;Initial Catalog=Usuarios;User ID=Usuarios;Password=UlacitSQL2020";
-        string baseDeDatos = "Data Source=localhost;Initial Catalog=Usuarios;Integrated Security=True";
-        //string baseDeDatos = "Data Source=DESKTOP-A4FEQHU\\SQLEXPRESS;Initial Catalog=Usuarios;Integrated Security=True";
+        //string baseDeDatos = "Data Source=localhost;Initial Catalog=Usuarios;Integrated Security=True";
+        string baseDeDatos = "Data Source=DESKTOP-A4FEQHU\\SQLEXPRESS;Initial Catalog=Usuarios;Integrated Security=True";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -70,6 +70,8 @@ namespace Usuarios
                     int rol = ddlRoles.SelectedIndex;
                     byte[] foto = fuFoto.FileBytes;
                     int respuesta = 0;
+                    string latitud = txtLatitud.Text;
+                    string longitud = txtLongitud.Text;
                     try
                     {
                         using (SqlConnection con = new SqlConnection(baseDeDatos))
@@ -83,9 +85,9 @@ namespace Usuarios
                             if (cantidad == 0)
                             {
                                 using (SqlCommand comando = new SqlCommand("INSERT INTO Usuario (Usuario, PrimerNombre, SegundoNombre,PrimerApellido," +
-                                    "SegundoApellido,Detalle,Contrasena,Cedula,Direccion,Telefono,Correo,RolID,GrupoID) VALUES ('" + usuario + "', '" + primerNombre + "', '" +
+                                    "SegundoApellido,Detalle,Contrasena,Cedula,Direccion,Telefono,Correo,RolID,GrupoID, Latitud, Longitud) VALUES ('" + usuario + "', '" + primerNombre + "', '" +
                                     segundoNombre + "','" + primerApellido + "', '" + segundoApellido + "', '" + detalle + "', '" + contrasena + "', " +
-                                    cedula + ", '" + direccion + "'," + telefono + ",'" + correo + "'," + rol + "," + grupo + ")", con))
+                                    cedula + ", '" + direccion + "'," + telefono + ",'" + correo + "'," + rol + "," + grupo + "," + latitud + "," + longitud + ")", con))
                                 {
                                     respuesta = comando.ExecuteNonQuery();
                                 }
