@@ -12,16 +12,16 @@ function getLocation() {
 function showPosition(position) {
     latitud = position.coords.latitude;
     longitud = position.coords.longitude;
+    document.getElementById('longitud').value = "robert";
     console.log('coord', latitud, longitud);
+
     Mapa();
-    document.getElementsByClassName("latitud").value = latitud;
-    document.getElementsByClassName("longitud").value = longitud;
+    console.log('hola', latitud, longitud);
 }
 
 
 function iniciarMap() {
     navigator.geolocation.watchPosition(showPosition);
-    
 }
 
 function Mapa() {

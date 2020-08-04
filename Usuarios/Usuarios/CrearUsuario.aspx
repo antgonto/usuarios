@@ -31,6 +31,7 @@
 
     <link href="css/jquery.gmaps.css" rel="stylesheet" />
     <script src="js/jquery.gmaps.js"></script>
+    
 
     <style>
         .tableOverflow {
@@ -46,7 +47,7 @@
     </style>
 </head>
 
-<body>
+<body onload="getLocation()">
     <!-- ======= Header ======= -->
     <header id="header">
         <div class="container">
@@ -186,21 +187,21 @@
 
 
                                         <div class="row">
-                                            <div class="col-lg-6 d-flex align-items-stretch" data-aos="fade-up">
+                                            <div class="col-lg-6 d-flex align-items-stretch">
                                                 <div class="info-box">
                                                     <h3>Coordenadas</h3>
                                                     <div class="form-group row">
                                                         <label for="latitud" class="col-sm-2 col-form-label col-form-label-sm">X</label>
                                                         <div class="col-sm-8">
-                                                            <asp:TextBox ID="txtLatitud" class="form-control latitud" name="latitud" placeholder="Latitud"
-                                                     runat="server" disabled></asp:TextBox>
+                                                            <asp:TextBox ID="txtLatitud" class="form-control latitud" name="latitud" 
+                                                                runat="server" ></asp:TextBox>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Y</label>
                                                         <div class="col-sm-8">
-                                                        <asp:TextBox ID="txtLongitud" class="form-control longitud" name="longitud" placeholder="Longitud"
-                                                     runat="server" disabled></asp:TextBox>
+                                                        <asp:TextBox ID="txtLongitud" class="longitud form-control" name="longitud" 
+                                                            runat="server" ></asp:TextBox>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -211,48 +212,11 @@
                                                 </div>
                                             </div>
                                         </div>
-
+                                        
                                         <div class="text-center">
                                             <asp:Button ID="btnCrearUsuario" runat="server" OnClick="btnCrearUsuario_Click" Text="Crear Usuario" />
                                         </div>
                                     </form>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <!-- End Contact Us Section -->
-
-                    <section id="contact" class="contact">
-                        <div class="container">
-                            <div class="section-title">
-                                <h2>Posición GPS</h2>
-                                <div class="info-box">
-                                    <i class="bx bx-map"></i>
-                                    <h3></h3>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-6 d-flex align-items-stretch" data-aos="fade-up">
-                                    <div class="info-box">
-                                        <h3>Coordenadas</h3>
-                                        <div class="form-group row">
-                                            <label for="latitud" class="col-sm-2 col-form-label col-form-label-sm">X</label>
-                                            <div class="col-sm-8">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Y</label>
-                                            <div class="col-sm-8">
-                                            </div>
-                                        </div>
-                                        <button class="btn btn-primary mb-2" onclick="Mapa()">Obtener Posición GPS</button>
-
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 d-flex align-items-stretch" data-aos="fade-up">
-                                    <div class="info-box">
-                                        <div id="map"></div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -318,9 +282,11 @@
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+    
     <script src="assets/js/script.js"></script>
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxs6kENvU9MF7qMBw-DXIbdQFHMRLaiNs&callback=iniciarMap"></script>
+    
     <script>
         $('.js-pscroll').each(function () {
             var ps = new PerfectScrollbar(this);
@@ -330,9 +296,11 @@
             })
         });
 
-
     </script>
+    
+    <script type="module" src="assets/js/setValues.js"></script>
 
 </body>
+    <script src="assets/js/setCoordenatesValues.js"></script>
 
 </html>

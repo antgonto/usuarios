@@ -75,6 +75,7 @@
     <Content Include="assets\js\jquery.gmaps.js" />
     <Content Include="assets\js\main.js" />
     <Content Include="assets\js\script.js" />
+    <Content Include="assets\js\setCoordenatesValues.js" />
     <Content Include="assets\vendor\animate.css\animate.compat.css" />
     <Content Include="assets\vendor\animate.css\animate.css" />
     <Content Include="assets\vendor\animate.css\animate.min.css" />

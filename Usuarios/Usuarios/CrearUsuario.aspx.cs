@@ -85,7 +85,7 @@ namespace Usuarios
                             if (cantidad == 0)
                             {
                                 using (SqlCommand comando = new SqlCommand("INSERT INTO Usuario (Usuario, PrimerNombre, SegundoNombre,PrimerApellido," +
-                                    "SegundoApellido,Detalle,Contrasena,Cedula,Direccion,Telefono,Correo,RolID,GrupoID, Latitud, Longitud) VALUES ('" + usuario + "', '" + primerNombre + "', '" +
+                                    "SegundoApellido,Detalle,Contrasena,Cedula,Direccion,Telefono,Correo,RolID,GrupoID,Latitud,Longitud) VALUES ('" + usuario + "', '" + primerNombre + "', '" +
                                     segundoNombre + "','" + primerApellido + "', '" + segundoApellido + "', '" + detalle + "', '" + contrasena + "', " +
                                     cedula + ", '" + direccion + "'," + telefono + ",'" + correo + "'," + rol + "," + grupo + "," + latitud + "," + longitud + ")", con))
                                 {
