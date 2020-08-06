@@ -93,7 +93,7 @@ namespace Usuarios
                                             }
                                             if (response == 1)
                                             {
-                                                Response.Write("<script>alert('Se modifico de manera correcta')</script>");
+                                                Response.Write("<script>alert('Se modificó de manera correcta')</script>");
                                                 Response.Redirect(Request.RawUrl);
                                             }
                                             else
@@ -103,7 +103,7 @@ namespace Usuarios
                                         }
                                         catch
                                         {
-                                            Response.Write("<script>alert('Debe ser un numero')</script>");
+                                            Response.Write("<script>alert('Debe ser un número')</script>");
                                         }
                                     }else if (opcion.Equals("RolID"))
                                     {

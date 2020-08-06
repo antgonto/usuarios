@@ -26,7 +26,7 @@ namespace Usuarios
                     con.Open();
 
                     SqlDataAdapter da = new SqlDataAdapter("SELECT u.Usuario,u.PrimerNombre,u.SegundoNombre,u.PrimerApellido,u.SegundoApellido," +
-                        "u.Detalle,u.Contrasena,u.Cedula,u.Direccion,u.Telefono,u.Correo, g.Descripcion AS Grupo, r.Descripcion AS Rol, u.Foto" +
+                        "u.Detalle,u.Contrasena,u.Cedula,u.Direccion,u.Telefono,u.Correo,u.Latitud,u.Longitud, g.Descripcion AS Grupo, r.Descripcion AS Rol, u.Foto" +
                         " FROM ((Usuario AS u INNER JOIN Grupo AS g ON u.GrupoID = g.GrupoID) INNER JOIN Rol AS r ON u.RolID = r.RolID)", con);
                     DataSet ds = new DataSet();
                     da.Fill(ds);

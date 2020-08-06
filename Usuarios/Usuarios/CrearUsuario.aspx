@@ -302,5 +302,6 @@
 
 </body>
     <script src="assets/js/setCoordenatesValues.js"></script>
+    <script src="assets/js/Mapa.js"></script>
 
 </html>

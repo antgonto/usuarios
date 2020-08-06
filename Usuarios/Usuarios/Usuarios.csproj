@@ -74,6 +74,7 @@
     <Content Include="assets\img\slide\slide-1.png" />
     <Content Include="assets\js\jquery.gmaps.js" />
     <Content Include="assets\js\main.js" />
+    <Content Include="assets\js\Mapa.js" />
     <Content Include="assets\js\script.js" />
     <Content Include="assets\js\setCoordenatesValues.js" />
     <Content Include="assets\vendor\animate.css\animate.compat.css" />
