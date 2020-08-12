@@ -29,10 +29,6 @@
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" type="text/css" rel="stylesheet">
 
-    <link href="css/jquery.gmaps.css" rel="stylesheet" />
-    <script src="js/jquery.gmaps.js"></script>
-    
-
     <style>
         .tableOverflow {
             overflow: auto;
@@ -65,6 +61,7 @@
                         </ul>
                     </li>
                     <li><a href="CrearGrupo.aspx">Grupos</a></li>
+                    <li><a href="CrearRol.aspx">Roles</a></li>
                 </ul>
             </nav>
             <!-- .nav-menu -->

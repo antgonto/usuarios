@@ -29,15 +29,21 @@
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
 
-     <style>
+    <style>
         .tableOverflow {
             overflow: auto;
             margin-bottom: 50px;
         }
+
+        #map {
+            height: 230px;
+            width: 90%;
+            margin: auto;
+        }
     </style>
 </head>
 
-<body>
+<body onload="getLocation()">
     <!-- ======= Header ======= -->
     <header id="header">
         <div class="container">
@@ -57,6 +63,7 @@
                         </ul>
                     </li>
                     <li><a href="CrearGrupo.aspx">Grupos</a></li>
+                    <li><a href="CrearRol.aspx">Roles</a></li>
                 </ul>
             </nav>
             <!-- .nav-menu -->
@@ -151,6 +158,7 @@
                                                                 <asp:ListItem Value="RolID">Rol</asp:ListItem>
                                                                 <asp:ListItem Value="GrupoID">Grupo</asp:ListItem>
                                                                 <asp:ListItem Value="Foto">Foto</asp:ListItem>
+                                                                <asp:ListItem Value="Posicionamiento">Posicionamiento</asp:ListItem>
                                                             </asp:DropDownList>
                                                         </div>
                                                     </div>
@@ -160,6 +168,32 @@
                                                             <asp:TextBox ID="txtNuevoValor" class="form-control" runat="server"></asp:TextBox>
                                                             <br />
                                                             <asp:FileUpload ID="fuNuevaFoto" class="form-control" runat="server" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-6 d-flex align-items-stretch">
+                                                            <div class="info-box">
+                                                                <h3>Coordenadas</h3>
+                                                                <div class="form-group row">
+                                                                    <label for="latitud" class="col-sm-2 col-form-label col-form-label-sm">X</label>
+                                                                    <div class="col-sm-8">
+                                                                        <asp:TextBox ID="txtLatitud" class="form-control latitud" name="latitud"
+                                                                            runat="server"></asp:TextBox>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Y</label>
+                                                                    <div class="col-sm-8">
+                                                                        <asp:TextBox ID="txtLongitud" class="longitud form-control" name="longitud"
+                                                                            runat="server"></asp:TextBox>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6 d-flex align-items-stretch" data-aos="fade-up">
+                                                            <div class="info-box">
+                                                                <div id="map"></div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="text-center">
@@ -234,6 +268,12 @@
     <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="assets/vendor/aos/aos.js"></script>
 
+    <script src="assets/js/main.js"></script>
+
+    <script src="assets/js/script.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxs6kENvU9MF7qMBw-DXIbdQFHMRLaiNs&callback=iniciarMap"></script>
+
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
     <script>
@@ -248,6 +288,10 @@
 
     </script>
 
+    <script type="module" src="assets/js/setValues.js"></script>
+
 </body>
+<script src="assets/js/setCoordenatesValues.js"></script>
+<script src="assets/js/Mapa.js"></script>
 
 </html>

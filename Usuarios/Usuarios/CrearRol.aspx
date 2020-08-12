@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CrearGrupo.aspx.cs" Inherits="Usuarios.WebForm1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CrearRol.aspx.cs" Inherits="Usuarios.CrearRol" %>
 
 <!DOCTYPE html>
 
@@ -55,8 +55,8 @@
                             <li><a href="EditarUsuarios.aspx">Editar</a></li>
                         </ul>
                     </li>
-                    <li class="active"><a href="CrearGrupo.aspx">Grupos</a></li>
-                    <li><a href="CrearRol.aspx">Roles</a></li>
+                    <li><a href="CrearGrupo.aspx">Grupos</a></li>
+                    <li class="active"><a href="CrearRol.aspx">Roles</a></li>
                 </ul>
             </nav>
             <!-- .nav-menu -->
@@ -71,7 +71,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <ol>
                         <li><a>Inicio</a></li>
-                        <li><a href="CrearGrupo.aspx">Grupos</a></li>
+                        <li><a href="CrearRol.aspx">Roles</a></li>
 
                     </ol>
                 </div>
@@ -84,10 +84,10 @@
                 <form class="php-email-form" id="crearGrupo" runat="server">
                     <div class="portfolio-description">
                         <div class="section-title">
-                            <h2>Lista de Grupos</h2>
+                            <h2>Lista de Roles</h2>
                         </div>
                         <div class="tableOverflow">
-                            <asp:GridView ID="gridGrupos" runat="server">
+                            <asp:GridView ID="gridRoles" runat="server">
                             </asp:GridView>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                         <div class="container">
 
                             <div class="section-title">
-                                <h2>Agregar Grupo</h2>
+                                <h2>Agregar Roles</h2>
                             </div>
 
                             <div class="row">
@@ -110,7 +110,7 @@
                                         <div class="validate"></div>
                                     </div>
                                     <div class="text-center">
-                                        <asp:Button ID="btnCrearGrupo" runat="server" OnClick="btnCrearGrupo_Click" Text="Crear Grupo" />
+                                        <asp:Button ID="btnCrearRol" runat="server" OnClick="btnCrearRol_Click" Text="Crear Rol" />
                                     </div>
                                         </div>
 
@@ -126,7 +126,7 @@
                     <section id="contact" class="contact">
                         <div class="container">
                             <div class="section-title">
-                                <h2>Modificar Grupo</h2>
+                                <h2>Modificar Rol</h2>
                             </div>
 
                             <div class="row">
@@ -134,15 +134,15 @@
                                     <div class="info-box">
                                         <h3>Editar</h3>
                                         <div class="form-group row">
-                                            <label for="groupID" class="col-sm-2 col-form-label col-form-label-sm">Grupo ID</label>
+                                            <label for="groupID" class="col-sm-2 col-form-label col-form-label-sm">Rol ID</label>
                                             <div class="col-sm-8">
-                                                <asp:TextBox ID="txtIdGrupoModificar" class="form-control form-control-sm" runat="server"></asp:TextBox>
+                                                <asp:TextBox ID="txtIdRolModificar" class="form-control form-control-sm" runat="server"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Descripción</label>
                                             <div class="col-sm-8">
-                                                <asp:TextBox ID="txtNuevoValorGrupo" class="form-control form-control-sm" runat="server"></asp:TextBox>
+                                                <asp:TextBox ID="txtNuevoValorRol" class="form-control form-control-sm" runat="server"></asp:TextBox>
                                             </div>
                                         </div>
                                         <asp:Button ID="btnModificar" class="btn btn-primary mb-2" runat="server" OnClick="btnModificar_Click" Text="Modificar" />
@@ -154,10 +154,10 @@
                                         <div class="form-group row">
                                             <label for="id" class="col-sm-2 col-form-label col-form-label-sm">Grupo ID</label>
                                             <div class="col-sm-8">
-                                                <asp:TextBox ID="txtIdGrupo" class="form-control form-control-sm" runat="server"></asp:TextBox>
+                                                <asp:TextBox ID="txtIdRol" class="form-control form-control-sm" runat="server"></asp:TextBox>
                                             </div>
                                         </div>
-                                        <asp:Button ID="btnEliminarGrupo" class="btn btn-primary mb-2" runat="server" Text="Eliminar Grupo" OnClick="btnEliminarGrupo_Click" />
+                                        <asp:Button ID="btnEliminarRol" class="btn btn-primary mb-2" runat="server" Text="Eliminar Rol" OnClick="btnEliminarGrupo_Click" />
                                     </div>
                                 </div>
                             </div>
@@ -244,3 +244,4 @@
     </script>
 </body>
 </html>
+

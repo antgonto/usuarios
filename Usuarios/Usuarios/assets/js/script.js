@@ -12,11 +12,8 @@ function getLocation() {
 function showPosition(position) {
     latitud = position.coords.latitude;
     longitud = position.coords.longitude;
-    document.getElementById('longitud').value = "robert";
-    console.log('coord', latitud, longitud);
 
     Mapa();
-    console.log('hola', latitud, longitud);
 }
 
 

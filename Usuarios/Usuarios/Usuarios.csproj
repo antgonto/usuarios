@@ -119,6 +119,7 @@
     <Content Include="assets\vendor\venobox\venobox.min.css" />
     <Content Include="assets\vendor\venobox\venobox.min.js" />
     <Content Include="assets\vendor\waypoints\jquery.waypoints.min.js" />
+    <Content Include="CrearRol.aspx" />
     <Content Include="CrearUsuario.aspx" />
     <Content Include="EditarUsuarios.aspx" />
     <Content Include="Index.html" />
@@ -127,13 +128,18 @@
     <Content Include="jQuery-webcam-master\jscam.swf" />
     <Content Include="jQuery-webcam-master\jscam_canvas_only.swf" />
     <Content Include="jQuery-webcam-master\src\jscam.xml" />
-    <Content Include="map.js" />
-    <Content Include="Mapa.aspx" />
     <Content Include="style.css" />
     <Content Include="Web.config" />
     <Content Include="CrearGrupo.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CrearRol.aspx.cs">
+      <DependentUpon>CrearRol.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CrearRol.aspx.designer.cs">
+      <DependentUpon>CrearRol.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CrearUsuario.aspx.cs">
       <DependentUpon>CrearUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -147,13 +153,6 @@
     </Compile>
     <Compile Include="EditarUsuarios.aspx.designer.cs">
       <DependentUpon>EditarUsuarios.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Mapa.aspx.cs">
-      <DependentUpon>Mapa.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Mapa.aspx.designer.cs">
-      <DependentUpon>Mapa.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CrearGrupo.aspx.cs">
