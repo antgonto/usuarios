@@ -117,9 +117,9 @@ Para **eliminar** debemos ingresar el código del rol y presionar el botón de e
 <!-- CONTACT -->
 ## Contácto
 
-Rodrigo Avendaño - [@rodri9920](https://github.com/rodri9920)) - ravendanop410@ulacit.ed.cr
-Robert Ramírez - [@robertram](https://github.com/robertram)) - rramirezm293@ulacit.ed.cr
-Valeria Rojas - [@vrojasc739](https://github.com/vrojasc739)) - vrojasc739@ulacit.ed.cr
+- Rodrigo Avendaño - [@rodri9920](https://github.com/rodri9920) - ravendanop410@ulacit.ed.cr
+- Robert Ramírez - [@robertram](https://github.com/robertram)- rramirezm293@ulacit.ed.cr
+- Valeria Rojas - [@vrojasc739](https://github.com/vrojasc739) - vrojasc739@ulacit.ed.cr
 
 
 Link de Proyecto: [https://github.com/antgonto/usuarios](https://github.com/antgonto/usuarios)
