@@ -10,11 +10,11 @@
 Sistema de manejo de usuarios y grupos. Creado por estudiantes de último año de Ingeniería Informática en ULACIT.
     <br />
     <br />
-    <a > [Rodrigo Avendaño](https://github.com/rodri9920) </a>
+    <a > Rodrigo Avendaño </a>
     ·
-    <a > [Robert Ramírez](https://github.com/robertram) </a>
+    <a > Robert Ramírez </a>
     ·
-    <a > [Valeria Rojas Ramírez](https://github.com/vrojasc739) </a>
+    <a > Valeria Rojas </a>
 </p>
 
 <!-- ABOUT THE PROJECT -->
@@ -112,6 +112,18 @@ En la página de Editar Rol tenemos un espacio para editar y otro para eliminar 
 Para **editar** debemos ingresar el código del rol e ingresar el nuevo valor.
 
 Para **eliminar** debemos ingresar el código del rol y presionar el botón de eliminar.
+
+
+<!-- CONTACT -->
+## Contácto
+
+Rodrigo Avendaño - [@rodri9920](https://github.com/rodri9920)) - ravendanop410@ulacit.ed.cr
+Robert Ramírez - [@robertram](https://github.com/robertram)) - rramirezm293@ulacit.ed.cr
+Valeria Rojas - [@vrojasc739](https://github.com/vrojasc739)) - vrojasc739@ulacit.ed.cr
+
+
+Link de Proyecto: [https://github.com/antgonto/usuarios](https://github.com/antgonto/usuarios)
+
 
 
 
