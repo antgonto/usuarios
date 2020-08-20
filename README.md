@@ -10,11 +10,11 @@
 Sistema de manejo de usuarios y grupos. Creado por estudiantes de último año de Ingeniería Informática en ULACIT.
     <br />
     <br />
-    <a href="(https://github.com/rodri9920)">Rodrigo Avendaño</a>
+    <a > [Rodrigo Avendaño](https://github.com/rodri9920) </a>
     ·
-      <a href="(https://github.com/robertram)">Robert Ramírez</a>
+    <a > [Robert Ramírez](https://github.com/robertram) </a>
     ·
-      <a href="(https://github.com/vrojasc739)">Valeria Rojas</a>
+    <a > [Valeria Rojas Ramírez](https://github.com/vrojasc739) </a>
 </p>
 
 <!-- ABOUT THE PROJECT -->
